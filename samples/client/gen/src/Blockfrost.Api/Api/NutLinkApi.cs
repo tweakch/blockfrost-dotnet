@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -368,7 +367,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
 
-            var localVarPath = "./nutlink/{address}";
+            var localVarPath = "/nutlink/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -439,7 +438,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
 
-            var localVarPath = "./nutlink/{address}";
+            var localVarPath = "/nutlink/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -515,7 +514,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
 
-            var localVarPath = "./nutlink/{address}/tickers";
+            var localVarPath = "/nutlink/{address}/tickers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -595,7 +594,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
 
-            var localVarPath = "./nutlink/{address}/tickers";
+            var localVarPath = "/nutlink/{address}/tickers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -679,7 +678,7 @@ namespace Blockfrost.Api.Api
             if (ticker == null)
                 throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
 
-            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
+            var localVarPath = "/nutlink/{address}/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -765,7 +764,7 @@ namespace Blockfrost.Api.Api
             if (ticker == null)
                 throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
 
-            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
+            var localVarPath = "/nutlink/{address}/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -845,7 +844,7 @@ namespace Blockfrost.Api.Api
             if (ticker == null)
                 throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
 
-            var localVarPath = "./nutlink/tickers/{ticker}";
+            var localVarPath = "/nutlink/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -925,7 +924,7 @@ namespace Blockfrost.Api.Api
             if (ticker == null)
                 throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
 
-            var localVarPath = "./nutlink/tickers/{ticker}";
+            var localVarPath = "/nutlink/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

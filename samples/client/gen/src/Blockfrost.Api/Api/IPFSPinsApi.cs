@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -54,8 +53,8 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ICollection&lt;InlineResponse2006&gt;</returns>
-        ICollection<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null);
+        /// <returns>List&lt;InlineResponse2006&gt;</returns>
+        List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null);
 
         /// <summary>
         /// List pinned objects
@@ -67,8 +66,8 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of ICollection&lt;InlineResponse2006&gt;</returns>
-        ApiResponse<ICollection<InlineResponse2006>> IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
+        ApiResponse<List<InlineResponse2006>> IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null);
         /// <summary>
         /// Get details about pinned object
         /// </summary>
@@ -144,8 +143,8 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ICollection&lt;InlineResponse2006&gt;</returns>
-        System.Threading.Tasks.Task<ICollection<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
+        System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null);
 
         /// <summary>
         /// List pinned objects
@@ -157,8 +156,8 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (ICollection&lt;InlineResponse2006&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ICollection<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
         /// <summary>
         /// Get details about pinned object
         /// </summary>
@@ -336,7 +335,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
 
-            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/add/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -407,7 +406,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
 
-            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/add/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -460,10 +459,10 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ICollection&lt;InlineResponse2006&gt;</returns>
-        public ICollection<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
+        /// <returns>List&lt;InlineResponse2006&gt;</returns>
+        public List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<ICollection<InlineResponse2006>> localVarResponse = IpfsPinListGetWithHttpInfo(count, page, order);
+             ApiResponse<List<InlineResponse2006>> localVarResponse = IpfsPinListGetWithHttpInfo(count, page, order);
              return localVarResponse.Data;
         }
 
@@ -474,11 +473,11 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of ICollection&lt;InlineResponse2006&gt;</returns>
-        public ApiResponse< ICollection<InlineResponse2006> > IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
+        public ApiResponse< List<InlineResponse2006> > IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./ipfs/pin/list/";
+            var localVarPath = "/ipfs/pin/list/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -521,9 +520,9 @@ namespace Blockfrost.Api.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ICollection<InlineResponse2006>>(localVarStatusCode,
+            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (ICollection<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
+                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
         }
 
         /// <summary>
@@ -533,10 +532,10 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ICollection&lt;InlineResponse2006&gt;</returns>
-        public async System.Threading.Tasks.Task<ICollection<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
+        public async System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<ICollection<InlineResponse2006>> localVarResponse = await IpfsPinListGetAsyncWithHttpInfo(count, page, order);
+             ApiResponse<List<InlineResponse2006>> localVarResponse = await IpfsPinListGetAsyncWithHttpInfo(count, page, order);
              return localVarResponse.Data;
 
         }
@@ -548,11 +547,11 @@ namespace Blockfrost.Api.Api
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (ICollection&lt;InlineResponse2006&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ICollection<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./ipfs/pin/list/";
+            var localVarPath = "/ipfs/pin/list/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -595,9 +594,9 @@ namespace Blockfrost.Api.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ICollection<InlineResponse2006>>(localVarStatusCode,
+            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (ICollection<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
+                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
         }
 
         /// <summary>
@@ -624,7 +623,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
 
-            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/list/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -695,7 +694,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
 
-            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/list/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -765,7 +764,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
 
-            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/remove/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -836,7 +835,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
 
-            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
+            var localVarPath = "/ipfs/pin/remove/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

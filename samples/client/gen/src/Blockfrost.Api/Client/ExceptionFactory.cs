@@ -9,7 +9,6 @@
  */
 
 using System;
-using RestSharp.Portable;
 
 namespace Blockfrost.Api.Client
 {

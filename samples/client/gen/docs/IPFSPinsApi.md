@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="ipfspinlistget"></a>
 # **IpfsPinListGet**
-> ICollection<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
+> List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
 
 List pinned objects
 
@@ -109,7 +109,7 @@ namespace Example
             try
             {
                 // List pinned objects
-                ICollection&lt;InlineResponse2006&gt; result = apiInstance.IpfsPinListGet(count, page, order);
+                List&lt;InlineResponse2006&gt; result = apiInstance.IpfsPinListGet(count, page, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ICollection<InlineResponse2006>**](InlineResponse2006.md)
+[**List<InlineResponse2006>**](InlineResponse2006.md)
 
 ### Authorization
 

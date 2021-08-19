@@ -11,12 +11,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using SwaggerDateConverter = Blockfrost.Api.Client.SwaggerDateConverter;
+using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Blockfrost.Api.Model
 {
@@ -24,7 +27,7 @@ namespace Blockfrost.Api.Model
     /// Asset
     /// </summary>
     [DataContract]
-        public partial class Asset :  IEquatable<Asset>
+        public partial class Asset :  IEquatable<Asset>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Asset" /> class.
@@ -38,7 +41,7 @@ namespace Blockfrost.Api.Model
         /// <param name="mintOrBurnCount">Count of mint and burn transactions (required).</param>
         /// <param name="onchainMetadata">onchainMetadata (required).</param>
         /// <param name="metadata">metadata (required).</param>
-        public Asset(string asset = default(string), string policyId = default(string), string assetName = default(string), string fingerprint = default(string), string quantity = default(string), string initialMintTxHash = default(string), int? mintOrBurnCount = default(int?), AssetOnchainMetadata onchainMetadata = default(AssetOnchainMetadata), AssetMetadata metadata = default(AssetMetadata))
+        public Asset(string asset = default(string), string policyId = default(string), string assetName = default(string), string fingerprint = default(string), string quantity = default(string), string initialMintTxHash = default(string), int? mintOrBurnCount = default(int?), AssetMetadata onchainMetadata = default(AssetMetadata), AssetMetadata metadata = default(AssetMetadata))
         {
             // to ensure "asset" is required (not null)
             if (asset == null)
@@ -176,7 +179,7 @@ namespace Blockfrost.Api.Model
         /// Gets or Sets OnchainMetadata
         /// </summary>
         [DataMember(Name="onchain_metadata", EmitDefaultValue=false)]
-        public AssetOnchainMetadata OnchainMetadata { get; set; }
+        public AssetMetadata OnchainMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets Metadata
@@ -209,9 +212,9 @@ namespace Blockfrost.Api.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public virtual string ToJson(JsonSerializerOptions options = null)
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonSerializer.Serialize(this, options);
         }
 
         /// <summary>
@@ -311,6 +314,16 @@ namespace Blockfrost.Api.Model
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
         }
     }
 }

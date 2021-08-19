@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -193,7 +192,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< InlineResponse2004 > IpfsAddPostWithHttpInfo ()
         {
 
-            var localVarPath = "./ipfs/add";
+            var localVarPath = "/ipfs/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -258,7 +257,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> IpfsAddPostAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./ipfs/add";
+            var localVarPath = "/ipfs/add";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

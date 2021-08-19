@@ -13,36 +13,169 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Threading.Tasks;
 using System.Linq;
 using System.Net;
 using System.Text;
-using Newtonsoft.Json;
-using RestSharp.Portable;
-using RestSharp.Portable.HttpClient;
+using System.Text.Json;
 
 namespace Blockfrost.Api.Client
 {
+    public interface IRestRequest
+    {
+        HttpStatusCode StatusCode { get; }
+        IHttpHeaders Headers { get; }
+        byte[] RawBytes { get; }
+        string Content { get; }
+    }
+
+    public interface IHttpHeaders : ICollection<KeyValuePair<string, IEnumerable<string>>>
+    {
+    }    
+    public interface IRestResponse
+    {
+        HttpStatusCode StatusCode { get; }
+        IHttpHeaders Headers { get; }
+        byte[] RawBytes { get; }
+        string Content { get; }
+
+    }
+    public class RestClient
+    {
+        private string _v;
+
+        public RestClient(string v)
+        {
+            _v = v;
+        }
+
+        internal Task<IRestResponse> Execute(IRestRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IgnoreResponseStatusCode { get; internal set; }
+        public string UserAgent { get; internal set; }
+        public TimeSpan? Timeout { get; internal set; }
+        public Uri BaseUrl { get; internal set; }
+    }
+    public class RestRequest : IRestRequest
+    {
+        private string _path;
+        private Method _method;
+
+        public RestRequest(string path, Method method)
+        {
+            _path = path;
+            _method = method;
+        }
+
+        public object Serializer { get; internal set; }
+
+        public HttpStatusCode StatusCode => throw new NotImplementedException();
+
+        public IHttpHeaders Headers => throw new NotImplementedException();
+
+        public byte[] RawBytes => throw new NotImplementedException();
+
+        public string Content => throw new NotImplementedException();
+
+        internal void AddParameter(string key, string value, ParameterType urlSegment)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddHeader(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddQueryParameter(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddParameter(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddFile(FileParameter value)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AddParameter(Parameter parameter)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class RestResponse : IRestResponse
+    {
+        
+        public RestResponse()
+        {
+            // Headers = new List<KeyValuePair<string, List<string>>>();
+        }
+        
+        public HttpStatusCode StatusCode => throw new NotImplementedException();
+
+        public IHttpHeaders Headers => throw new NotImplementedException();
+
+        public byte[] RawBytes => throw new NotImplementedException();
+
+        public string Content => throw new NotImplementedException();
+
+    }
+
+    public enum Method
+    {
+        GET,
+        POST,
+        PUT
+
+    }
+    public class Parameter
+    {
+        public ParameterType Type { get; internal set; }
+        public string ContentType { get; internal set; }
+        public object Value { get; internal set; }
+    }
+    public enum ParameterType
+    {
+        UrlSegment,
+        RequestBody
+    }
+
+    public class FileParameter
+    {
+        internal static FileParameter Create(string name, byte[] vs, string v)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     /// <summary>
     /// API client is mainly responsible for making the HTTP call to the API backend.
     /// </summary>
         public partial class ApiClient
     {
-        private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        private JsonSerializerOptions serializerSettings = new JsonSerializerOptions
         {
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
+            WriteIndented = true
         };
 
         /// <summary>
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
-        /// <param name="request">The RestSharp request object</param>
+        /// <param name="request">The request object</param>
         partial void InterceptRequest(IRestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
-        /// <param name="request">The RestSharp request object</param>
-        /// <param name="response">The RestSharp response object</param>
+        /// <param name="request">The request object</param>
+        /// <param name="response">The response object</param>
         partial void InterceptResponse(IRestRequest request, IRestResponse response);
 
         /// <summary>
@@ -53,7 +186,6 @@ namespace Blockfrost.Api.Client
         {
             Configuration = Blockfrost.Api.Client.Configuration.Default;
             RestClient = new RestClient("https://cardano-mainnet.blockfrost.io/api/v0/");
-            RestClient.IgnoreResponseStatusCode = true;
         }
 
         /// <summary>
@@ -66,7 +198,6 @@ namespace Blockfrost.Api.Client
             Configuration = config ?? Blockfrost.Api.Client.Configuration.Default;
 
             RestClient = new RestClient(Configuration.BasePath);
-            RestClient.IgnoreResponseStatusCode = true;
         }
 
         /// <summary>
@@ -80,7 +211,6 @@ namespace Blockfrost.Api.Client
                 throw new ArgumentException("basePath cannot be empty");
 
             RestClient = new RestClient(basePath);
-            RestClient.IgnoreResponseStatusCode = true;
             Configuration = Client.Configuration.Default;
         }
 
@@ -116,8 +246,6 @@ namespace Blockfrost.Api.Client
             String contentType)
         {
             var request = new RestRequest(path, method);
-            // disable ResetSharp.Portable built-in serialization
-            request.Serializer = null;
 
             // add path parameter, if any
             foreach(var param in pathParams)
@@ -138,12 +266,12 @@ namespace Blockfrost.Api.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value);
+                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
             {
-                request.AddParameter(new Parameter { Value = postBody, Type = ParameterType.RequestBody, ContentType = contentType });
+                request.AddParameter(contentType, postBody, ParameterType.RequestBody);
             }
 
             return request;
@@ -173,13 +301,13 @@ namespace Blockfrost.Api.Client
                 pathParams, contentType);
 
             // set timeout
-            RestClient.Timeout = TimeSpan.FromMilliseconds(Configuration.Timeout);
             
+            RestClient.Timeout = Configuration.Timeout;
             // set user agent
             RestClient.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
-            var response = RestClient.Execute(request).Result;
+            var response = RestClient.Execute(request);
             InterceptResponse(request, response);
 
             return (Object) response;
@@ -207,7 +335,7 @@ namespace Blockfrost.Api.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
             InterceptRequest(request);
-            var response = await RestClient.Execute(request);
+            var response = await RestClient.ExecuteTaskAsync(request);
             InterceptResponse(request, response);
             return (Object)response;
         }
@@ -328,7 +456,7 @@ namespace Blockfrost.Api.Client
             // at this point, it must be a model (json)
             try
             {
-                return JsonConvert.DeserializeObject(response.Content, type, serializerSettings);
+                return JsonSerializer.Deserialize(response.Content, type, serializerSettings);
             }
             catch (Exception e)
             {
@@ -345,7 +473,7 @@ namespace Blockfrost.Api.Client
         {
             try
             {
-                return obj != null ? JsonConvert.SerializeObject(obj) : null;
+                return obj != null ? JsonSerializer.Serialize(obj) : null;
             }
             catch (Exception e)
             {
@@ -426,7 +554,7 @@ namespace Blockfrost.Api.Client
         /// <returns>Casted object</returns>
         public static dynamic ConvertType(dynamic fromObject, Type toObject)
         {
-            return Convert.ChangeType(fromObject, toObject);
+            return System.Convert.ChangeType(fromObject, toObject);
         }
 
         /// <summary>
@@ -450,7 +578,6 @@ namespace Blockfrost.Api.Client
 
         /// <summary>
         /// URL encode a string
-        /// Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
         /// </summary>
         /// <param name="input">String to be URL encoded</param>
         /// <returns>Byte array</returns>

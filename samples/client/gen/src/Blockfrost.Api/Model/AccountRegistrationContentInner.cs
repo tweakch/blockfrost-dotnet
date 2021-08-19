@@ -11,12 +11,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using SwaggerDateConverter = Blockfrost.Api.Client.SwaggerDateConverter;
+using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Blockfrost.Api.Model
 {
@@ -24,13 +27,13 @@ namespace Blockfrost.Api.Model
     /// AccountRegistrationContentInner
     /// </summary>
     [DataContract]
-        public partial class AccountRegistrationContentInner :  IEquatable<AccountRegistrationContentInner>
+        public partial class AccountRegistrationContentInner :  IEquatable<AccountRegistrationContentInner>, IValidatableObject
     {
         /// <summary>
         /// Action in the certificate
         /// </summary>
         /// <value>Action in the certificate</value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
                 public enum ActionEnum
         {
             /// <summary>
@@ -102,9 +105,9 @@ namespace Blockfrost.Api.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public virtual string ToJson(JsonSerializerOptions options = null)
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonSerializer.Serialize(this, options);
         }
 
         /// <summary>
@@ -155,6 +158,16 @@ namespace Blockfrost.Api.Model
                     hashCode = hashCode * 59 + this.Action.GetHashCode();
                 return hashCode;
             }
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
         }
     }
 }

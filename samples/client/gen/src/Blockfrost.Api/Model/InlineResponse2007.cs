@@ -11,12 +11,15 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using SwaggerDateConverter = Blockfrost.Api.Client.SwaggerDateConverter;
+using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Blockfrost.Api.Model
 {
@@ -24,13 +27,13 @@ namespace Blockfrost.Api.Model
     /// InlineResponse2007
     /// </summary>
     [DataContract]
-        public partial class InlineResponse2007 :  IEquatable<InlineResponse2007>
+        public partial class InlineResponse2007 :  IEquatable<InlineResponse2007>, IValidatableObject
     {
         /// <summary>
         /// State of the pinned object. We define 5 states: &#x60;queued&#x60;, &#x60;pinned&#x60;, &#x60;unpinned&#x60;, &#x60;failed&#x60;, &#x60;gc&#x60;. When the object is pending retrieval (i.e. after &#x60;/ipfs/pin/add/{IPFS_path}&#x60;), the state is &#x60;queued&#x60;. If the object is already successfully retrieved, state is changed to &#x60;pinned&#x60; or &#x60;failed&#x60; otherwise. When object is unpinned (i.e. after &#x60;/ipfs/pin/remove/{IPFS_path}&#x60;) it is marked for garbage collection. State &#x60;gc&#x60; means that a previously &#x60;unpinned&#x60; item has been garbage collected due to account being over storage quota. 
         /// </summary>
         /// <value>State of the pinned object. We define 5 states: &#x60;queued&#x60;, &#x60;pinned&#x60;, &#x60;unpinned&#x60;, &#x60;failed&#x60;, &#x60;gc&#x60;. When the object is pending retrieval (i.e. after &#x60;/ipfs/pin/add/{IPFS_path}&#x60;), the state is &#x60;queued&#x60;. If the object is already successfully retrieved, state is changed to &#x60;pinned&#x60; or &#x60;failed&#x60; otherwise. When object is unpinned (i.e. after &#x60;/ipfs/pin/remove/{IPFS_path}&#x60;) it is marked for garbage collection. State &#x60;gc&#x60; means that a previously &#x60;unpinned&#x60; item has been garbage collected due to account being over storage quota. </value>
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
                 public enum StateEnum
         {
             /// <summary>
@@ -151,9 +154,9 @@ namespace Blockfrost.Api.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public virtual string ToJson(JsonSerializerOptions options = null)
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonSerializer.Serialize(this, options);
         }
 
         /// <summary>
@@ -225,6 +228,16 @@ namespace Blockfrost.Api.Model
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 return hashCode;
             }
+        }
+
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
         }
     }
 }

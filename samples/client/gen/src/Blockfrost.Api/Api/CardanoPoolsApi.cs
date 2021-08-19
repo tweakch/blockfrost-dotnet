@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -653,7 +652,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< PoolList > PoolsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools";
+            var localVarPath = "/pools";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -727,7 +726,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<PoolList>> PoolsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools";
+            var localVarPath = "/pools";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -805,7 +804,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdBlocksGet");
 
-            var localVarPath = "./pools/{pool_id}/blocks";
+            var localVarPath = "/pools/{pool_id}/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -885,7 +884,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdBlocksGet");
 
-            var localVarPath = "./pools/{pool_id}/blocks";
+            var localVarPath = "/pools/{pool_id}/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -964,7 +963,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdDelegatorsGet");
 
-            var localVarPath = "./pools/{pool_id}/delegators";
+            var localVarPath = "/pools/{pool_id}/delegators";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1044,7 +1043,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdDelegatorsGet");
 
-            var localVarPath = "./pools/{pool_id}/delegators";
+            var localVarPath = "/pools/{pool_id}/delegators";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1117,7 +1116,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdGet");
 
-            var localVarPath = "./pools/{pool_id}";
+            var localVarPath = "/pools/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1188,7 +1187,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdGet");
 
-            var localVarPath = "./pools/{pool_id}";
+            var localVarPath = "/pools/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1264,7 +1263,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdHistoryGet");
 
-            var localVarPath = "./pools/{pool_id}/history";
+            var localVarPath = "/pools/{pool_id}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1344,7 +1343,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdHistoryGet");
 
-            var localVarPath = "./pools/{pool_id}/history";
+            var localVarPath = "/pools/{pool_id}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1417,7 +1416,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdMetadataGet");
 
-            var localVarPath = "./pools/{pool_id}/metadata";
+            var localVarPath = "/pools/{pool_id}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1488,7 +1487,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdMetadataGet");
 
-            var localVarPath = "./pools/{pool_id}/metadata";
+            var localVarPath = "/pools/{pool_id}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1558,7 +1557,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdRelaysGet");
 
-            var localVarPath = "./pools/{pool_id}/relays";
+            var localVarPath = "/pools/{pool_id}/relays";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1629,7 +1628,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdRelaysGet");
 
-            var localVarPath = "./pools/{pool_id}/relays";
+            var localVarPath = "/pools/{pool_id}/relays";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1705,7 +1704,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdUpdatesGet");
 
-            var localVarPath = "./pools/{pool_id}/updates";
+            var localVarPath = "/pools/{pool_id}/updates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1785,7 +1784,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdUpdatesGet");
 
-            var localVarPath = "./pools/{pool_id}/updates";
+            var localVarPath = "/pools/{pool_id}/updates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1859,7 +1858,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< PoolListRetire > PoolsRetiredGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools/retired";
+            var localVarPath = "/pools/retired";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1933,7 +1932,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiredGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools/retired";
+            var localVarPath = "/pools/retired";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2006,7 +2005,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< PoolListRetire > PoolsRetiringGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools/retiring";
+            var localVarPath = "/pools/retiring";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2080,7 +2079,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiringGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools/retiring";
+            var localVarPath = "/pools/retiring";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

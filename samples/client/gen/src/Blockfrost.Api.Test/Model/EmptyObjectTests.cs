@@ -18,7 +18,7 @@ using Blockfrost.Api.Api;
 using Blockfrost.Api.Model;
 using Blockfrost.Api.Client;
 using System.Reflection;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Blockfrost.Api.Test
 {

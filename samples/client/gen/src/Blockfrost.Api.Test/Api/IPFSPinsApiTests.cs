@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
 
 using Blockfrost.Api.Client;
@@ -84,7 +83,7 @@ namespace Blockfrost.Api.Test
             //int? page = null;
             //string order = null;
             //var response = instance.IpfsPinListGet(count, page, order);
-            //Assert.IsInstanceOf<ICollection<InlineResponse2006>> (response, "response is ICollection<InlineResponse2006>");
+            //Assert.IsInstanceOf<List<InlineResponse2006>> (response, "response is List<InlineResponse2006>");
         }
         /// <summary>
         /// Test IpfsPinListIPFSPathGet

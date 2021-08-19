@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -319,7 +318,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< TxMetadataLabels > MetadataTxsLabelsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./metadata/txs/labels";
+            var localVarPath = "/metadata/txs/labels";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -393,7 +392,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<TxMetadataLabels>> MetadataTxsLabelsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./metadata/txs/labels";
+            var localVarPath = "/metadata/txs/labels";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -471,7 +470,7 @@ namespace Blockfrost.Api.Api
             if (label == null)
                 throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelCborGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}/cbor";
+            var localVarPath = "/metadata/txs/labels/{label}/cbor";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -551,7 +550,7 @@ namespace Blockfrost.Api.Api
             if (label == null)
                 throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelCborGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}/cbor";
+            var localVarPath = "/metadata/txs/labels/{label}/cbor";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -630,7 +629,7 @@ namespace Blockfrost.Api.Api
             if (label == null)
                 throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}";
+            var localVarPath = "/metadata/txs/labels/{label}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -710,7 +709,7 @@ namespace Blockfrost.Api.Api
             if (label == null)
                 throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}";
+            var localVarPath = "/metadata/txs/labels/{label}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

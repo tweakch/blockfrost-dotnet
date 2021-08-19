@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -631,7 +630,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< EpochContent > EpochsLatestGetWithHttpInfo ()
         {
 
-            var localVarPath = "./epochs/latest";
+            var localVarPath = "/epochs/latest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -696,7 +695,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<EpochContent>> EpochsLatestGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./epochs/latest";
+            var localVarPath = "/epochs/latest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -760,7 +759,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< EpochParamContent > EpochsLatestParametersGetWithHttpInfo ()
         {
 
-            var localVarPath = "./epochs/latest/parameters";
+            var localVarPath = "/epochs/latest/parameters";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -825,7 +824,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<EpochParamContent>> EpochsLatestParametersGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./epochs/latest/parameters";
+            var localVarPath = "/epochs/latest/parameters";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -900,7 +899,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberBlocksGet");
 
-            var localVarPath = "./epochs/{number}/blocks";
+            var localVarPath = "/epochs/{number}/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -980,7 +979,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberBlocksGet");
 
-            var localVarPath = "./epochs/{number}/blocks";
+            var localVarPath = "/epochs/{number}/blocks";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1064,7 +1063,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoEpochsApi->EpochsNumberBlocksPoolIdGet");
 
-            var localVarPath = "./epochs/{number}/blocks/{pool_id}";
+            var localVarPath = "/epochs/{number}/blocks/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1150,7 +1149,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoEpochsApi->EpochsNumberBlocksPoolIdGet");
 
-            var localVarPath = "./epochs/{number}/blocks/{pool_id}";
+            var localVarPath = "/epochs/{number}/blocks/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1224,7 +1223,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberGet");
 
-            var localVarPath = "./epochs/{number}";
+            var localVarPath = "/epochs/{number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1295,7 +1294,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberGet");
 
-            var localVarPath = "./epochs/{number}";
+            var localVarPath = "/epochs/{number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1369,7 +1368,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberNextGet");
 
-            var localVarPath = "./epochs/{number}/next";
+            var localVarPath = "/epochs/{number}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1446,7 +1445,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberNextGet");
 
-            var localVarPath = "./epochs/{number}/next";
+            var localVarPath = "/epochs/{number}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1518,7 +1517,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberParametersGet");
 
-            var localVarPath = "./epochs/{number}/parameters";
+            var localVarPath = "/epochs/{number}/parameters";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1589,7 +1588,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberParametersGet");
 
-            var localVarPath = "./epochs/{number}/parameters";
+            var localVarPath = "/epochs/{number}/parameters";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1663,7 +1662,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberPreviousGet");
 
-            var localVarPath = "./epochs/{number}/previous";
+            var localVarPath = "/epochs/{number}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1740,7 +1739,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberPreviousGet");
 
-            var localVarPath = "./epochs/{number}/previous";
+            var localVarPath = "/epochs/{number}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1816,7 +1815,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberStakesGet");
 
-            var localVarPath = "./epochs/{number}/stakes";
+            var localVarPath = "/epochs/{number}/stakes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1893,7 +1892,7 @@ namespace Blockfrost.Api.Api
             if (number == null)
                 throw new ApiException(400, "Missing required parameter 'number' when calling CardanoEpochsApi->EpochsNumberStakesGet");
 
-            var localVarPath = "./epochs/{number}/stakes";
+            var localVarPath = "/epochs/{number}/stakes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1974,7 +1973,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoEpochsApi->EpochsNumberStakesPoolIdGet");
 
-            var localVarPath = "./epochs/{number}/stakes/{pool_id}";
+            var localVarPath = "/epochs/{number}/stakes/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2057,7 +2056,7 @@ namespace Blockfrost.Api.Api
             if (poolId == null)
                 throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoEpochsApi->EpochsNumberStakesPoolIdGet");
 
-            var localVarPath = "./epochs/{number}/stakes/{pool_id}";
+            var localVarPath = "/epochs/{number}/stakes/{pool_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

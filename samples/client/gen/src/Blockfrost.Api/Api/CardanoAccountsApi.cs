@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -640,7 +639,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressAddressesAssetsGet");
 
-            var localVarPath = "./accounts/{stake_address}/addresses/assets";
+            var localVarPath = "/accounts/{stake_address}/addresses/assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -720,7 +719,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressAddressesAssetsGet");
 
-            var localVarPath = "./accounts/{stake_address}/addresses/assets";
+            var localVarPath = "/accounts/{stake_address}/addresses/assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -799,7 +798,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressAddressesGet");
 
-            var localVarPath = "./accounts/{stake_address}/addresses";
+            var localVarPath = "/accounts/{stake_address}/addresses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -879,7 +878,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressAddressesGet");
 
-            var localVarPath = "./accounts/{stake_address}/addresses";
+            var localVarPath = "/accounts/{stake_address}/addresses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -958,7 +957,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressDelegationsGet");
 
-            var localVarPath = "./accounts/{stake_address}/delegations";
+            var localVarPath = "/accounts/{stake_address}/delegations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1038,7 +1037,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressDelegationsGet");
 
-            var localVarPath = "./accounts/{stake_address}/delegations";
+            var localVarPath = "/accounts/{stake_address}/delegations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1111,7 +1110,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressGet");
 
-            var localVarPath = "./accounts/{stake_address}";
+            var localVarPath = "/accounts/{stake_address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1182,7 +1181,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressGet");
 
-            var localVarPath = "./accounts/{stake_address}";
+            var localVarPath = "/accounts/{stake_address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1258,7 +1257,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressHistoryGet");
 
-            var localVarPath = "./accounts/{stake_address}/history";
+            var localVarPath = "/accounts/{stake_address}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1338,7 +1337,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressHistoryGet");
 
-            var localVarPath = "./accounts/{stake_address}/history";
+            var localVarPath = "/accounts/{stake_address}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1417,7 +1416,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressMirsGet");
 
-            var localVarPath = "./accounts/{stake_address}/mirs";
+            var localVarPath = "/accounts/{stake_address}/mirs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1497,7 +1496,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressMirsGet");
 
-            var localVarPath = "./accounts/{stake_address}/mirs";
+            var localVarPath = "/accounts/{stake_address}/mirs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1576,7 +1575,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressRegistrationsGet");
 
-            var localVarPath = "./accounts/{stake_address}/registrations";
+            var localVarPath = "/accounts/{stake_address}/registrations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1656,7 +1655,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressRegistrationsGet");
 
-            var localVarPath = "./accounts/{stake_address}/registrations";
+            var localVarPath = "/accounts/{stake_address}/registrations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1735,7 +1734,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressRewardsGet");
 
-            var localVarPath = "./accounts/{stake_address}/rewards";
+            var localVarPath = "/accounts/{stake_address}/rewards";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1815,7 +1814,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressRewardsGet");
 
-            var localVarPath = "./accounts/{stake_address}/rewards";
+            var localVarPath = "/accounts/{stake_address}/rewards";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1894,7 +1893,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressWithdrawalsGet");
 
-            var localVarPath = "./accounts/{stake_address}/withdrawals";
+            var localVarPath = "/accounts/{stake_address}/withdrawals";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1974,7 +1973,7 @@ namespace Blockfrost.Api.Api
             if (stakeAddress == null)
                 throw new ApiException(400, "Missing required parameter 'stakeAddress' when calling CardanoAccountsApi->AccountsStakeAddressWithdrawalsGet");
 
-            var localVarPath = "./accounts/{stake_address}/withdrawals";
+            var localVarPath = "/accounts/{stake_address}/withdrawals";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -201,7 +200,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSGatewayApi->IpfsGatewayIPFSPathGet");
 
-            var localVarPath = "./ipfs/gateway/{IPFS_path}";
+            var localVarPath = "/ipfs/gateway/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -271,7 +270,7 @@ namespace Blockfrost.Api.Api
             if (iPFSPath == null)
                 throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSGatewayApi->IpfsGatewayIPFSPathGet");
 
-            var localVarPath = "./ipfs/gateway/{IPFS_path}";
+            var localVarPath = "/ipfs/gateway/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

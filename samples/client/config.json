@@ -1,6 +1,9 @@
 {
+    "targetFramework":"v5.0",
     "packageName" : "Blockfrost.Api",
     "packageGuid" :"0033076C-68A7-4EEB-9C66-74A266DCB6E0",
     "returnICollection": true,
-    "targetFramework":"v5.0"
+    "generateApiTests": true,
+    "generateApis":true,
+    "templateDirectory":"templates"
 }

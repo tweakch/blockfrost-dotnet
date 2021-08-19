@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -622,7 +621,7 @@ namespace Blockfrost.Api.Api
             if (contentType == null)
                 throw new ApiException(400, "Missing required parameter 'contentType' when calling CardanoTransactionsApi->TxSubmitPost");
 
-            var localVarPath = "./tx/submit";
+            var localVarPath = "/tx/submit";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -693,7 +692,7 @@ namespace Blockfrost.Api.Api
             if (contentType == null)
                 throw new ApiException(400, "Missing required parameter 'contentType' when calling CardanoTransactionsApi->TxSubmitPost");
 
-            var localVarPath = "./tx/submit";
+            var localVarPath = "/tx/submit";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -763,7 +762,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashDelegationsGet");
 
-            var localVarPath = "./txs/{hash}/delegations";
+            var localVarPath = "/txs/{hash}/delegations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -834,7 +833,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashDelegationsGet");
 
-            var localVarPath = "./txs/{hash}/delegations";
+            var localVarPath = "/txs/{hash}/delegations";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -904,7 +903,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashGet");
 
-            var localVarPath = "./txs/{hash}";
+            var localVarPath = "/txs/{hash}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -975,7 +974,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashGet");
 
-            var localVarPath = "./txs/{hash}";
+            var localVarPath = "/txs/{hash}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1045,7 +1044,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMetadataCborGet");
 
-            var localVarPath = "./txs/{hash}/metadata/cbor";
+            var localVarPath = "/txs/{hash}/metadata/cbor";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1116,7 +1115,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMetadataCborGet");
 
-            var localVarPath = "./txs/{hash}/metadata/cbor";
+            var localVarPath = "/txs/{hash}/metadata/cbor";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1186,7 +1185,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMetadataGet");
 
-            var localVarPath = "./txs/{hash}/metadata";
+            var localVarPath = "/txs/{hash}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1257,7 +1256,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMetadataGet");
 
-            var localVarPath = "./txs/{hash}/metadata";
+            var localVarPath = "/txs/{hash}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1327,7 +1326,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMirsGet");
 
-            var localVarPath = "./txs/{hash}/mirs";
+            var localVarPath = "/txs/{hash}/mirs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1398,7 +1397,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashMirsGet");
 
-            var localVarPath = "./txs/{hash}/mirs";
+            var localVarPath = "/txs/{hash}/mirs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1468,7 +1467,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashPoolRetiresGet");
 
-            var localVarPath = "./txs/{hash}/pool_retires";
+            var localVarPath = "/txs/{hash}/pool_retires";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1539,7 +1538,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashPoolRetiresGet");
 
-            var localVarPath = "./txs/{hash}/pool_retires";
+            var localVarPath = "/txs/{hash}/pool_retires";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1609,7 +1608,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashPoolUpdatesGet");
 
-            var localVarPath = "./txs/{hash}/pool_updates";
+            var localVarPath = "/txs/{hash}/pool_updates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1680,7 +1679,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashPoolUpdatesGet");
 
-            var localVarPath = "./txs/{hash}/pool_updates";
+            var localVarPath = "/txs/{hash}/pool_updates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1750,7 +1749,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashStakesGet");
 
-            var localVarPath = "./txs/{hash}/stakes";
+            var localVarPath = "/txs/{hash}/stakes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1821,7 +1820,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashStakesGet");
 
-            var localVarPath = "./txs/{hash}/stakes";
+            var localVarPath = "/txs/{hash}/stakes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1891,7 +1890,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashUtxosGet");
 
-            var localVarPath = "./txs/{hash}/utxos";
+            var localVarPath = "/txs/{hash}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1962,7 +1961,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashUtxosGet");
 
-            var localVarPath = "./txs/{hash}/utxos";
+            var localVarPath = "/txs/{hash}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2032,7 +2031,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashWithdrawalsGet");
 
-            var localVarPath = "./txs/{hash}/withdrawals";
+            var localVarPath = "/txs/{hash}/withdrawals";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2103,7 +2102,7 @@ namespace Blockfrost.Api.Api
             if (hash == null)
                 throw new ApiException(400, "Missing required parameter 'hash' when calling CardanoTransactionsApi->TxsHashWithdrawalsGet");
 
-            var localVarPath = "./txs/{hash}/withdrawals";
+            var localVarPath = "/txs/{hash}/withdrawals";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

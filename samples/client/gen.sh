@@ -5,17 +5,21 @@
 
 args=$1
 
-rm -rf gen
+rm -rf gen/
 
 java -jar swagger-codegen-cli.jar generate \
     -i https://raw.githubusercontent.com/blockfrost/openapi/master/swagger.yaml \
     -l csharp \
-    -c ./config.json \
-    -o ./gen \
-    -t csharp 
+    -o gen \
+    -t templates \
+    --additional-properties packageName=Blockfrost.Api,\
+                            packageGuid=0033076C-68A7-4EEB-9C66-74A266DCB6E0 \
+
+grep -rli 'AssetOnchainMetadata' gen/* | xargs -i@ sed -i 's/AssetOnchainMetadata/AssetMetadata/g' @
 
 rm -f ./gen/*.sln
 dotnet new sln -n Blockfrost.Gen -o ./gen
 dotnet sln ./gen/Blockfrost.Gen.sln add ./gen/src/Blockfrost.Api/Blockfrost.Api.csproj
 dotnet sln ./gen/Blockfrost.Gen.sln add ./gen/src/Blockfrost.Api.Test/Blockfrost.Api.Test.csproj
-dotnet clean --nologo -v q
+dotnet clean --nologo
+dotnet build ./gen/Blockfrost.Gen.sln

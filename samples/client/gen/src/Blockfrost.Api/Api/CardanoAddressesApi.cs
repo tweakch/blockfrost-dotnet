@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -414,7 +413,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressGet");
 
-            var localVarPath = "./addresses/{address}";
+            var localVarPath = "/addresses/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -485,7 +484,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressGet");
 
-            var localVarPath = "./addresses/{address}";
+            var localVarPath = "/addresses/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -555,7 +554,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTotalGet");
 
-            var localVarPath = "./addresses/{address}/total";
+            var localVarPath = "/addresses/{address}/total";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -626,7 +625,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTotalGet");
 
-            var localVarPath = "./addresses/{address}/total";
+            var localVarPath = "/addresses/{address}/total";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -706,7 +705,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTransactionsGet");
 
-            var localVarPath = "./addresses/{address}/transactions";
+            var localVarPath = "/addresses/{address}/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -792,7 +791,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTransactionsGet");
 
-            var localVarPath = "./addresses/{address}/transactions";
+            var localVarPath = "/addresses/{address}/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -873,7 +872,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTxsGet");
 
-            var localVarPath = "./addresses/{address}/txs";
+            var localVarPath = "/addresses/{address}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -953,7 +952,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTxsGet");
 
-            var localVarPath = "./addresses/{address}/txs";
+            var localVarPath = "/addresses/{address}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1032,7 +1031,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressUtxosGet");
 
-            var localVarPath = "./addresses/{address}/utxos";
+            var localVarPath = "/addresses/{address}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1112,7 +1111,7 @@ namespace Blockfrost.Api.Api
             if (address == null)
                 throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressUtxosGet");
 
-            var localVarPath = "./addresses/{address}/utxos";
+            var localVarPath = "/addresses/{address}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

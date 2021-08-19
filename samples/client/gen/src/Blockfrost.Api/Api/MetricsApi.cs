@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -231,7 +230,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< MetricsEndpoints > MetricsEndpointsGetWithHttpInfo ()
         {
 
-            var localVarPath = "./metrics/endpoints";
+            var localVarPath = "/metrics/endpoints";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -296,7 +295,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<MetricsEndpoints>> MetricsEndpointsGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./metrics/endpoints";
+            var localVarPath = "/metrics/endpoints";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -360,7 +359,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< Metrics > MetricsGetWithHttpInfo ()
         {
 
-            var localVarPath = "./metrics/";
+            var localVarPath = "/metrics/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -425,7 +424,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<Metrics>> MetricsGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./metrics/";
+            var localVarPath = "/metrics/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

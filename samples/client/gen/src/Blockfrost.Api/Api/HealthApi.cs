@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -269,7 +268,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< InlineResponse2002 > HealthClockGetWithHttpInfo ()
         {
 
-            var localVarPath = "./health/clock";
+            var localVarPath = "/health/clock";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -334,7 +333,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> HealthClockGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./health/clock";
+            var localVarPath = "/health/clock";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -398,7 +397,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< InlineResponse2001 > HealthGetWithHttpInfo ()
         {
 
-            var localVarPath = "./health";
+            var localVarPath = "/health";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -463,7 +462,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> HealthGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./health";
+            var localVarPath = "/health";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -527,7 +526,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< InlineResponse200 > RootGetWithHttpInfo ()
         {
 
-            var localVarPath = "./";
+            var localVarPath = "/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -592,7 +591,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> RootGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./";
+            var localVarPath = "/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

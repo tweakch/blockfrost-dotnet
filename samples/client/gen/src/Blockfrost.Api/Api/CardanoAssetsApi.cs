@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -528,7 +527,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetAddressesGet");
 
-            var localVarPath = "./assets/{asset}/addresses";
+            var localVarPath = "/assets/{asset}/addresses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -608,7 +607,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetAddressesGet");
 
-            var localVarPath = "./assets/{asset}/addresses";
+            var localVarPath = "/assets/{asset}/addresses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -681,7 +680,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetGet");
 
-            var localVarPath = "./assets/{asset}";
+            var localVarPath = "/assets/{asset}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -752,7 +751,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetGet");
 
-            var localVarPath = "./assets/{asset}";
+            var localVarPath = "/assets/{asset}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -828,7 +827,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetHistoryGet");
 
-            var localVarPath = "./assets/{asset}/history";
+            var localVarPath = "/assets/{asset}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -908,7 +907,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetHistoryGet");
 
-            var localVarPath = "./assets/{asset}/history";
+            var localVarPath = "/assets/{asset}/history";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -987,7 +986,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTransactionsGet");
 
-            var localVarPath = "./assets/{asset}/transactions";
+            var localVarPath = "/assets/{asset}/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1067,7 +1066,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTransactionsGet");
 
-            var localVarPath = "./assets/{asset}/transactions";
+            var localVarPath = "/assets/{asset}/transactions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1146,7 +1145,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTxsGet");
 
-            var localVarPath = "./assets/{asset}/txs";
+            var localVarPath = "/assets/{asset}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1226,7 +1225,7 @@ namespace Blockfrost.Api.Api
             if (asset == null)
                 throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTxsGet");
 
-            var localVarPath = "./assets/{asset}/txs";
+            var localVarPath = "/assets/{asset}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1300,7 +1299,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< Assets > AssetsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./assets";
+            var localVarPath = "/assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1374,7 +1373,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<Assets>> AssetsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./assets";
+            var localVarPath = "/assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1452,7 +1451,7 @@ namespace Blockfrost.Api.Api
             if (policyId == null)
                 throw new ApiException(400, "Missing required parameter 'policyId' when calling CardanoAssetsApi->AssetsPolicyPolicyIdGet");
 
-            var localVarPath = "./assets/policy/{policy_id}";
+            var localVarPath = "/assets/policy/{policy_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1532,7 +1531,7 @@ namespace Blockfrost.Api.Api
             if (policyId == null)
                 throw new ApiException(400, "Missing required parameter 'policyId' when calling CardanoAssetsApi->AssetsPolicyPolicyIdGet");
 
-            var localVarPath = "./assets/policy/{policy_id}";
+            var localVarPath = "/assets/policy/{policy_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

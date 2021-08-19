@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp.Portable;
 using Blockfrost.Api.Client;
 using Blockfrost.Api.Model;
 
@@ -537,7 +536,7 @@ namespace Blockfrost.Api.Api
             if (slotNumber == null)
                 throw new ApiException(400, "Missing required parameter 'slotNumber' when calling CardanoBlocksApi->BlocksEpochEpochNumberSlotSlotNumberGet");
 
-            var localVarPath = "./blocks/epoch/{epoch_number}/slot/{slot_number}";
+            var localVarPath = "/blocks/epoch/{epoch_number}/slot/{slot_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -614,7 +613,7 @@ namespace Blockfrost.Api.Api
             if (slotNumber == null)
                 throw new ApiException(400, "Missing required parameter 'slotNumber' when calling CardanoBlocksApi->BlocksEpochEpochNumberSlotSlotNumberGet");
 
-            var localVarPath = "./blocks/epoch/{epoch_number}/slot/{slot_number}";
+            var localVarPath = "/blocks/epoch/{epoch_number}/slot/{slot_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -685,7 +684,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberGet");
 
-            var localVarPath = "./blocks/{hash_or_number}";
+            var localVarPath = "/blocks/{hash_or_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -756,7 +755,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberGet");
 
-            var localVarPath = "./blocks/{hash_or_number}";
+            var localVarPath = "/blocks/{hash_or_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -830,7 +829,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberNextGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/next";
+            var localVarPath = "/blocks/{hash_or_number}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -907,7 +906,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberNextGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/next";
+            var localVarPath = "/blocks/{hash_or_number}/next";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -983,7 +982,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberPreviousGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/previous";
+            var localVarPath = "/blocks/{hash_or_number}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1060,7 +1059,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberPreviousGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/previous";
+            var localVarPath = "/blocks/{hash_or_number}/previous";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1138,7 +1137,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberTxsGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/txs";
+            var localVarPath = "/blocks/{hash_or_number}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1218,7 +1217,7 @@ namespace Blockfrost.Api.Api
             if (hashOrNumber == null)
                 throw new ApiException(400, "Missing required parameter 'hashOrNumber' when calling CardanoBlocksApi->BlocksHashOrNumberTxsGet");
 
-            var localVarPath = "./blocks/{hash_or_number}/txs";
+            var localVarPath = "/blocks/{hash_or_number}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1286,7 +1285,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< BlockContent > BlocksLatestGetWithHttpInfo ()
         {
 
-            var localVarPath = "./blocks/latest";
+            var localVarPath = "/blocks/latest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1351,7 +1350,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<BlockContent>> BlocksLatestGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./blocks/latest";
+            var localVarPath = "/blocks/latest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1421,7 +1420,7 @@ namespace Blockfrost.Api.Api
         public ApiResponse< BlockContentTxs > BlocksLatestTxsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./blocks/latest/txs";
+            var localVarPath = "/blocks/latest/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1495,7 +1494,7 @@ namespace Blockfrost.Api.Api
         public async System.Threading.Tasks.Task<ApiResponse<BlockContentTxs>> BlocksLatestTxsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./blocks/latest/txs";
+            var localVarPath = "/blocks/latest/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1567,7 +1566,7 @@ namespace Blockfrost.Api.Api
             if (slotNumber == null)
                 throw new ApiException(400, "Missing required parameter 'slotNumber' when calling CardanoBlocksApi->BlocksSlotSlotNumberGet");
 
-            var localVarPath = "./blocks/slot/{slot_number}";
+            var localVarPath = "/blocks/slot/{slot_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1638,7 +1637,7 @@ namespace Blockfrost.Api.Api
             if (slotNumber == null)
                 throw new ApiException(400, "Missing required parameter 'slotNumber' when calling CardanoBlocksApi->BlocksSlotSlotNumberGet");
 
-            var localVarPath = "./blocks/slot/{slot_number}";
+            var localVarPath = "/blocks/slot/{slot_number}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
