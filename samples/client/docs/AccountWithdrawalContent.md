@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AccountWithdrawalContent
+# Blockfrost.Api.Model.AccountWithdrawalContent
 ## Properties
 
 Name | Type | Description | Notes

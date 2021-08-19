@@ -1,4 +1,4 @@
-# IO.Swagger.Model.PoolListRetire
+# Blockfrost.Api.Model.PoolListRetire
 ## Properties
 
 Name | Type | Description | Notes

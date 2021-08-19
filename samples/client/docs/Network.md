@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Network
+# Blockfrost.Api.Model.Network
 ## Properties
 
 Name | Type | Description | Notes

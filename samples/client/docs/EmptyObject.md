@@ -1,4 +1,4 @@
-# IO.Swagger.Model.EmptyObject
+# Blockfrost.Api.Model.EmptyObject
 ## Properties
 
 Name | Type | Description | Notes

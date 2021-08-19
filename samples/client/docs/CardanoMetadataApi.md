@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CardanoMetadataApi
+# Blockfrost.Api.Api.CardanoMetadataApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -20,9 +20,9 @@ List of all used transaction metadata labels.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -89,9 +89,9 @@ Transaction metadata per label.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -160,9 +160,9 @@ Transaction metadata per label.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {

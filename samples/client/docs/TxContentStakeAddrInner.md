@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentStakeAddrInner
+# Blockfrost.Api.Model.TxContentStakeAddrInner
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.PoolRelaysInner
+# Blockfrost.Api.Model.PoolRelaysInner
 ## Properties
 
 Name | Type | Description | Notes

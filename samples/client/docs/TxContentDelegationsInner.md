@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentDelegationsInner
+# Blockfrost.Api.Model.TxContentDelegationsInner
 ## Properties
 
 Name | Type | Description | Notes

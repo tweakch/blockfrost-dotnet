@@ -1,4 +1,4 @@
-# IO.Swagger.Model.PoolDelegators
+# Blockfrost.Api.Model.PoolDelegators
 ## Properties
 
 Name | Type | Description | Notes

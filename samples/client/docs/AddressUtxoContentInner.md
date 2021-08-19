@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AddressUtxoContentInner
+# Blockfrost.Api.Model.AddressUtxoContentInner
 ## Properties
 
 Name | Type | Description | Notes

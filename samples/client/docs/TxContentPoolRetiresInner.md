@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentPoolRetiresInner
+# Blockfrost.Api.Model.TxContentPoolRetiresInner
 ## Properties
 
 Name | Type | Description | Notes

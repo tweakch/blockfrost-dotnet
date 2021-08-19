@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AddressContent
+# Blockfrost.Api.Model.AddressContent
 ## Properties
 
 Name | Type | Description | Notes

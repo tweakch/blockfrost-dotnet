@@ -1,4 +1,4 @@
-# IO.Swagger.Model.EpochStakeContent
+# Blockfrost.Api.Model.EpochStakeContent
 ## Properties
 
 Name | Type | Description | Notes

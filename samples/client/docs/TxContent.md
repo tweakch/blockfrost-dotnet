@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContent
+# Blockfrost.Api.Model.TxContent
 ## Properties
 
 Name | Type | Description | Notes

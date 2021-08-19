@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AccountDelegationContent
+# Blockfrost.Api.Model.AccountDelegationContent
 ## Properties
 
 Name | Type | Description | Notes

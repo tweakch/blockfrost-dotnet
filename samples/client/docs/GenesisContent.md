@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GenesisContent
+# Blockfrost.Api.Model.GenesisContent
 ## Properties
 
 Name | Type | Description | Notes

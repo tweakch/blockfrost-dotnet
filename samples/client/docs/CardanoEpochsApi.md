@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CardanoEpochsApi
+# Blockfrost.Api.Api.CardanoEpochsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -27,9 +27,9 @@ Return the information about the latest, therefore current, epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -88,9 +88,9 @@ Return the protocol parameters for the latest epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -149,9 +149,9 @@ Return the blocks minted for the epoch specified.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -220,9 +220,9 @@ Return the block minted for the epoch specified by stake pool.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -293,9 +293,9 @@ Return the content of the requested epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -358,9 +358,9 @@ Return the list of epochs following a specific epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -427,9 +427,9 @@ Return the protocol parameters for the epoch specified.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -492,9 +492,9 @@ Return the list of epochs preceding a specific epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -561,9 +561,9 @@ Return the active stake distribution for the specified epoch.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -630,9 +630,9 @@ Return the active stake distribution for the epoch specified by stake pool.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {

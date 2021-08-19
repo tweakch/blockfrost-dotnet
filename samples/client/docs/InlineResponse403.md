@@ -1,4 +1,4 @@
-# IO.Swagger.Model.InlineResponse403
+# Blockfrost.Api.Model.InlineResponse403
 ## Properties
 
 Name | Type | Description | Notes

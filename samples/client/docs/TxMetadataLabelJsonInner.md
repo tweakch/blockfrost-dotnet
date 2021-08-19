@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxMetadataLabelJsonInner
+# Blockfrost.Api.Model.TxMetadataLabelJsonInner
 ## Properties
 
 Name | Type | Description | Notes

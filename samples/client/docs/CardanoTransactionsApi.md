@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CardanoTransactionsApi
+# Blockfrost.Api.Api.CardanoTransactionsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -28,9 +28,9 @@ Submit an already serialized transaction to the network.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -93,9 +93,9 @@ Obtain information about delegation certificates of a specific transaction.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -158,9 +158,9 @@ Return content of the requested transaction.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -223,9 +223,9 @@ Obtain the transaction metadata in CBOR.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -288,9 +288,9 @@ Obtain the transaction metadata.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -353,9 +353,9 @@ Obtain information about Move Instantaneous Rewards (MIRs) of a specific transac
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -418,9 +418,9 @@ Obtain information about stake pool retirements within a specific transaction.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -483,9 +483,9 @@ Obtain information about stake pool registration and update certificates of a sp
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -548,9 +548,9 @@ Obtain information about (de)registration of stake addresses within a transactio
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -613,9 +613,9 @@ Return the inputs and UTXOs of the specific transaction.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -678,9 +678,9 @@ Obtain information about withdrawals of a specific transaction.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {

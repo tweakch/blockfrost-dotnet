@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentUtxoInputs
+# Blockfrost.Api.Model.TxContentUtxoInputs
 ## Properties
 
 Name | Type | Description | Notes

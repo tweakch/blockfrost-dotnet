@@ -1,4 +1,4 @@
-# IO.Swagger.Api.NutLinkApi
+# Blockfrost.Api.Api.NutLinkApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -21,9 +21,9 @@ List metadata about specific address
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -85,9 +85,9 @@ List tickers for a specific metadata oracle
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -155,9 +155,9 @@ List of records of a specific ticker
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {
@@ -227,9 +227,9 @@ List of records of a specific ticker
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AnyOftxMetadataLabelJsonInnerJsonMetadata
+# Blockfrost.Api.Model.AnyOftxMetadataLabelJsonInnerJsonMetadata
 ## Properties
 
 Name | Type | Description | Notes

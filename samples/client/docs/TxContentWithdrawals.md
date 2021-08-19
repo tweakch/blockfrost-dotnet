@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentWithdrawals
+# Blockfrost.Api.Model.TxContentWithdrawals
 ## Properties
 
 Name | Type | Description | Notes

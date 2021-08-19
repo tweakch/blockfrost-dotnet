@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AnyOfinlineResponse2003
+# Blockfrost.Api.Model.AnyOfinlineResponse2003
 ## Properties
 
 Name | Type | Description | Notes

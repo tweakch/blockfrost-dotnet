@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AccountMirContentInner
+# Blockfrost.Api.Model.AccountMirContentInner
 ## Properties
 
 Name | Type | Description | Notes

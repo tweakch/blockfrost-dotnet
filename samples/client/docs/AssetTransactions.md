@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AssetTransactions
+# Blockfrost.Api.Model.AssetTransactions
 ## Properties
 
 Name | Type | Description | Notes

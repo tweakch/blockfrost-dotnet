@@ -1,4 +1,4 @@
-# IO.Swagger.Model.NutlinkTickersTickerInner
+# Blockfrost.Api.Model.NutlinkTickersTickerInner
 ## Properties
 
 Name | Type | Description | Notes

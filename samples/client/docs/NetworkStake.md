@@ -1,4 +1,4 @@
-# IO.Swagger.Model.NetworkStake
+# Blockfrost.Api.Model.NetworkStake
 ## Properties
 
 Name | Type | Description | Notes

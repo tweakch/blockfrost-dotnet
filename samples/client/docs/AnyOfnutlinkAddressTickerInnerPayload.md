@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AnyOfnutlinkAddressTickerInnerPayload
+# Blockfrost.Api.Model.AnyOfnutlinkAddressTickerInnerPayload
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AccountRewardContentInner
+# Blockfrost.Api.Model.AccountRewardContentInner
 ## Properties
 
 Name | Type | Description | Notes

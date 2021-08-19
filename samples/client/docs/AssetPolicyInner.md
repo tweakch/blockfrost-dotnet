@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AssetPolicyInner
+# Blockfrost.Api.Model.AssetPolicyInner
 ## Properties
 
 Name | Type | Description | Notes

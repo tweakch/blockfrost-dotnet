@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxMetadataLabelCborInner
+# Blockfrost.Api.Model.TxMetadataLabelCborInner
 ## Properties
 
 Name | Type | Description | Notes

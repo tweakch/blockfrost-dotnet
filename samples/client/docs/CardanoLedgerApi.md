@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CardanoLedgerApi
+# Blockfrost.Api.Api.CardanoLedgerApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -18,9 +18,9 @@ Return the information about blockchain genesis.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Blockfrost.Api.Api;
+using Blockfrost.Api.Client;
+using Blockfrost.Api.Model;
 
 namespace Example
 {

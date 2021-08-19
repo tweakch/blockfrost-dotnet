@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MetricsEndpoints
+# Blockfrost.Api.Model.MetricsEndpoints
 ## Properties
 
 Name | Type | Description | Notes

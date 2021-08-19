@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TxContentPoolCertsInner
+# Blockfrost.Api.Model.TxContentPoolCertsInner
 ## Properties
 
 Name | Type | Description | Notes

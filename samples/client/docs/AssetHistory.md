@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AssetHistory
+# Blockfrost.Api.Model.AssetHistory
 ## Properties
 
 Name | Type | Description | Notes

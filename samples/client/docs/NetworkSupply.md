@@ -1,4 +1,4 @@
-# IO.Swagger.Model.NetworkSupply
+# Blockfrost.Api.Model.NetworkSupply
 ## Properties
 
 Name | Type | Description | Notes

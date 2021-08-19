@@ -1,4 +1,4 @@
-# IO.Swagger.Model.PoolHistory
+# Blockfrost.Api.Model.PoolHistory
 ## Properties
 
 Name | Type | Description | Notes
