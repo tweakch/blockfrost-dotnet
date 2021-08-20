@@ -37,4 +37,91 @@ namespace Blockfrost.Api.Gen.Client
         /// </summary>
         ExceptionFactory ExceptionFactory { get; set; }
     }
+
+    public abstract class ABlockfrostService : IBlockfrostService
+    {
+        private System.Lazy<System.Text.Json.JsonSerializerOptions> _options;
+
+        //private System.Text.Json.JsonSerializerOptions _textJsonSerializerSettings { get { return _options.Value; } }
+        private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+
+        protected System.Net.Http.HttpClient _httpClient;
+
+        public string BaseUrl
+        {
+            get => _httpClient.BaseAddress?.AbsoluteUri;
+            set => _httpClient.BaseAddress = new Uri(value);
+        }
+
+        /// <summary>
+        /// Gets or sets the configuration object
+        /// </summary>
+        /// <value>An instance of the Configuration</value>
+        public Configuration Configuration {get; set;}
+
+        /// <summary>
+        /// Gets the base path of the API client.
+        /// </summary>
+        /// <value>The base path</value>
+        public String GetBasePath() => BaseUrl;
+        
+        /// <summary>
+        /// Provides a factory method hook for the creation of exceptions.
+        /// </summary>
+        /// <summary>
+        /// Provides a factory method hook for the creation of exceptions.
+        /// </summary>
+        public Blockfrost.Api.Gen.Client.ExceptionFactory ExceptionFactory
+        {
+            get
+            {
+                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                {
+                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+                }
+                return _exceptionFactory;
+            }
+            set { _exceptionFactory = value; }
+        }
+        public string Network { get; set; }
+
+        public bool ReadResponseAsString { get; set; }
+
+        public ABlockfrostService(System.Net.Http.HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+            _options = new System.Lazy<System.Text.Json.JsonSerializerOptions>(CreateSerializerOptions);
+            this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = httpClient.BaseAddress.ToString() };
+
+            _exceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
+        }
+        
+        // TODO Deprecate
+        public ABlockfrostService(String basePath) : this(new HttpClient() {BaseAddress = new Uri(basePath)})
+        {
+        }
+
+         // TODO Deprecate
+        public ABlockfrostService() : this(Blockfrost.Api.Gen.Client.Configuration.Default)
+        {
+        }
+
+        // TODO Deprecate
+        public ABlockfrostService(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        {
+            if (configuration == null) // use the default one in Configuration
+                this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
+            else
+                this.Configuration = configuration;
+
+            ExceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        private System.Text.Json.JsonSerializerOptions CreateSerializerOptions()
+        {
+            var options = new System.Text.Json.JsonSerializerOptions();
+            UpdateJsonSerializerOptions(options);
+            return options;
+        }
+    }
 }

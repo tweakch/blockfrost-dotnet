@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+
+using System.Net.Http;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -72,31 +74,23 @@ namespace Blockfrost.Api.Gen.Services
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class IPFSGatewayApi : IIPFSGatewayApi
+        public partial class IPFSGatewayApi : ABlockfrostService, IIPFSGatewayApi
     {
-        private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        public IPFSGatewayApi(System.Net.Http.HttpClient httpClient) : base(httpClient)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IPFSGatewayApi(String basePath)
-        {
-            this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
-
-            ExceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
-        }
+        public IPFSGatewayApi(String basePath) : base(basePath){}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class
         /// </summary>
         /// <returns></returns>
-        public IPFSGatewayApi()
-        {
-            this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
-
-            ExceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
-        }
+        public IPFSGatewayApi() : base(Blockfrost.Api.Gen.Client.Configuration.Default) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class
@@ -104,23 +98,8 @@ namespace Blockfrost.Api.Gen.Services
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IPFSGatewayApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public IPFSGatewayApi(Blockfrost.Api.Gen.Client.Configuration configuration = null) : base(configuration)
         {
-            if (configuration == null) // use the default one in Configuration
-                this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
-            else
-                this.Configuration = configuration;
-
-            ExceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public String GetBasePath()
-        {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
         }
 
         /// <summary>
@@ -131,28 +110,6 @@ namespace Blockfrost.Api.Gen.Services
         public void SetBasePath(String basePath)
         {
             // do nothing
-        }
-
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public Blockfrost.Api.Gen.Client.Configuration Configuration {get; set;}
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public Blockfrost.Api.Gen.Client.ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
         }
 
         /// <summary>
