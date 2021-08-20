@@ -58,6 +58,7 @@
             {{^isInherited}}
             {{^isReadOnly}}
             {{#required}}
+            {{^isEnum}}
             // to ensure "{{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}}" is required (not null)
             if ({{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}} == null)
             {
@@ -67,6 +68,11 @@
             {
                 this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
             }
+            {{/isEnum}}
+            {{#isEnum}}
+            this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
+            {{/isEnum}}
+            
             {{/required}}
             {{/isReadOnly}}
             {{/isInherited}}
@@ -100,8 +106,10 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
         /// <summary>
         /// {{^description}}Gets or Sets {{{name}}}{{/description}}{{#description}}{{description}}{{/description}}
         /// </summary>{{#description}}
-        /// <value>{{description}}</value>{{/description}}
-        [DataMember(Name="{{baseName}}", EmitDefaultValue={{emitDefaultValue}})]{{#isDate}}
+        /// <value>{{description}}</value>{{/description}}{{#required}}
+        [Required]{{/required}}   
+        [DataMember(Name="{{baseName}}", EmitDefaultValue={{emitDefaultValue}})]
+        [JsonPropertyName("{{baseName}}")]{{#isDate}}
         //[JsonConverter(typeof(SwaggerDateConverter))]{{/isDate}}
         public {{{datatype}}} {{name}} { get; {{#isReadOnly}}private {{/isReadOnly}}set; }
         {{/isEnum}}
@@ -158,8 +166,7 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
             return {{#vars}}{{#parent}}base.Equals(input) && {{/parent}}{{#isNotContainer}}
                 (
                     this.{{name}} == input.{{name}} ||
-                    (this.{{name}} != null &&
-                    this.{{name}}.Equals(input.{{name}}))
+                    {{^isEnum}}(this.{{name}} != null && {{/isEnum}}this.{{name}}.Equals(input.{{name}}){{^isEnum}}){{/isEnum}}
                 ){{#hasMore}} && {{/hasMore}}{{/isNotContainer}}{{^isNotContainer}}
                 (
                     this.{{name}} == input.{{name}} ||
@@ -184,8 +191,13 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
                 int hashCode = 41;
                 {{/parent}}
                 {{#vars}}
+                {{#isEnum}} 
+                hashCode = hashCode * 59 + this.{{name}}.GetHashCode();
+                {{/isEnum}} 
+                {{^isEnum}} 
                 if (this.{{name}} != null)
                     hashCode = hashCode * 59 + this.{{name}}.GetHashCode();
+                {{/isEnum}}    
                 {{/vars}}
                 return hashCode;
             }

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.PoolMetadata
+# Blockfrost.Api.Gen.Model.PoolMetadata
 ## Properties
 
 Name | Type | Description | Notes

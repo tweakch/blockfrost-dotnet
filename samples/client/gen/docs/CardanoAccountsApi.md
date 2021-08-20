@@ -1,4 +1,4 @@
-# Blockfrost.Api.Api.CardanoAccountsApi
+# Blockfrost.Api.Gen.Api.CardanoAccountsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -26,9 +26,9 @@ Obtain information about assets associated with addresses of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -97,9 +97,9 @@ Obtain information about the addresses of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -168,9 +168,9 @@ Obtain information about the delegation of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -239,9 +239,9 @@ Obtain information about a specific stake account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -304,9 +304,9 @@ Obtain information about the history of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -375,9 +375,9 @@ Obtain information about the MIRs of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -446,9 +446,9 @@ Obtain information about the registrations and deregistrations of a specific acc
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -517,9 +517,9 @@ Obtain information about the reward history of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -588,9 +588,9 @@ Obtain information about the withdrawals of a specific account.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {

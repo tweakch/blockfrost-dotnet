@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AssetPolicyInner
+# Blockfrost.Api.Gen.Model.AssetPolicyInner
 ## Properties
 
 Name | Type | Description | Notes

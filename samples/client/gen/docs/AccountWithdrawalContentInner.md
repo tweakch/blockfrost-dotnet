@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AccountWithdrawalContentInner
+# Blockfrost.Api.Gen.Model.AccountWithdrawalContentInner
 ## Properties
 
 Name | Type | Description | Notes

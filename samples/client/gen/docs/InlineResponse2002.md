@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.InlineResponse2002
+# Blockfrost.Api.Gen.Model.InlineResponse2002
 ## Properties
 
 Name | Type | Description | Notes

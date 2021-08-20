@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AnyOfnutlinkTickersTickerInnerPayload
+# Blockfrost.Api.Gen.Model.AnyOfnutlinkTickersTickerInnerPayload
 ## Properties
 
 Name | Type | Description | Notes

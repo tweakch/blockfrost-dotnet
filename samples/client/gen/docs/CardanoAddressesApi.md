@@ -1,4 +1,4 @@
-# Blockfrost.Api.Api.CardanoAddressesApi
+# Blockfrost.Api.Gen.Api.CardanoAddressesApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -22,9 +22,9 @@ Obtain information about a specific address.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -87,9 +87,9 @@ Obtain details about an address.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -152,9 +152,9 @@ Transactions on the address.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -227,9 +227,9 @@ Transactions on the address.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -298,9 +298,9 @@ UTXOs of the address.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.PoolDelegators
+# Blockfrost.Api.Gen.Model.PoolDelegators
 ## Properties
 
 Name | Type | Description | Notes

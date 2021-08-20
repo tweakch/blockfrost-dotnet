@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.OneOftxContentMetadataInnerJsonMetadata
+# Blockfrost.Api.Gen.Model.OneOftxContentMetadataInnerJsonMetadata
 ## Properties
 
 Name | Type | Description | Notes

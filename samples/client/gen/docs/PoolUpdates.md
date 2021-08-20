@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.PoolUpdates
+# Blockfrost.Api.Gen.Model.PoolUpdates
 ## Properties
 
 Name | Type | Description | Notes

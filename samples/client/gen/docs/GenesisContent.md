@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.GenesisContent
+# Blockfrost.Api.Gen.Model.GenesisContent
 ## Properties
 
 Name | Type | Description | Notes

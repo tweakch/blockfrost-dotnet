@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.InlineResponse403
+# Blockfrost.Api.Gen.Model.InlineResponse403
 ## Properties
 
 Name | Type | Description | Notes

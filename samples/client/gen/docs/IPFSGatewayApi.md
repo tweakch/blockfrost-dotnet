@@ -1,4 +1,4 @@
-# Blockfrost.Api.Api.IPFSGatewayApi
+# Blockfrost.Api.Gen.Api.IPFSGatewayApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -18,9 +18,9 @@ Retrieve an object from the IFPS gateway (useful if you do not want to rely on a
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Api.IPFSPinsApi
+# Blockfrost.Api.Gen.Api.IPFSPinsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -21,9 +21,9 @@ Pinned objects are counted in your user storage quota.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ List objects pinned to local storage
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -155,9 +155,9 @@ Get information about locally pinned IPFS object
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {
@@ -220,9 +220,9 @@ Remove pinned objects from local storage
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Api;
-using Blockfrost.Api.Client;
-using Blockfrost.Api.Model;
+using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Client;
+using Blockfrost.Api.Gen.Model;
 
 namespace Example
 {

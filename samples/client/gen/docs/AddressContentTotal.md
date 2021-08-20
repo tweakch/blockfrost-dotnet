@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AddressContentTotal
+# Blockfrost.Api.Gen.Model.AddressContentTotal
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.TxContentMetadataCborInner
+# Blockfrost.Api.Gen.Model.TxContentMetadataCborInner
 ## Properties
 
 Name | Type | Description | Notes

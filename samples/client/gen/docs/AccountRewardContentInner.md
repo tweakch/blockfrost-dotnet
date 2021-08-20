@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AccountRewardContentInner
+# Blockfrost.Api.Gen.Model.AccountRewardContentInner
 ## Properties
 
 Name | Type | Description | Notes

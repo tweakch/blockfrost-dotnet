@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.EpochStakeContentInner
+# Blockfrost.Api.Gen.Model.EpochStakeContentInner
 ## Properties
 
 Name | Type | Description | Notes

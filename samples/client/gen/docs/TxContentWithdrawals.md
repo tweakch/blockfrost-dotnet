@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.TxContentWithdrawals
+# Blockfrost.Api.Gen.Model.TxContentWithdrawals
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AssetHistoryInner
+# Blockfrost.Api.Gen.Model.AssetHistoryInner
 ## Properties
 
 Name | Type | Description | Notes

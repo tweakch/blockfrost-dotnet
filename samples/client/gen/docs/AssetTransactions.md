@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.AssetTransactions
+# Blockfrost.Api.Gen.Model.AssetTransactions
 ## Properties
 
 Name | Type | Description | Notes

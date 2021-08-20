@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.TxMetadataLabelJsonInner
+# Blockfrost.Api.Gen.Model.TxMetadataLabelJsonInner
 ## Properties
 
 Name | Type | Description | Notes

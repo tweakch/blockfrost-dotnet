@@ -1,4 +1,4 @@
-# Blockfrost.Api.Model.TxContentUtxoOutputs
+# Blockfrost.Api.Gen.Model.TxContentUtxoOutputs
 ## Properties
 
 Name | Type | Description | Notes
