@@ -5,7 +5,7 @@
 
 args=$1
 
-rm -rf gen/
+rm -rf gen/src/Blockfrost.Api.Gen/*
 
 java -jar swagger-codegen-cli.jar generate \
     -i https://raw.githubusercontent.com/blockfrost/openapi/master/swagger.yaml \
