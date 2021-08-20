@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.CardanoMetadataApi
+# Blockfrost.Api.Gen.Services.CardanoMetadataApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -20,7 +20,7 @@ List of all used transaction metadata labels.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -89,7 +89,7 @@ Transaction metadata per label.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -160,7 +160,7 @@ Transaction metadata per label.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

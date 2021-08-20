@@ -14,239 +14,285 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface INutLinkApi : IApiAccessor
+        public interface ICardanoAddressesApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Specific address
         /// </summary>
         /// <remarks>
-        /// List metadata about specific address
+        /// Obtain information about a specific address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>NutlinkAddress</returns>
-        NutlinkAddress NutlinkAddressGet (string address);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>AddressContent</returns>
+        AddressContent AddressesAddressGet (string address);
 
         /// <summary>
-        /// 
+        /// Specific address
         /// </summary>
         /// <remarks>
-        /// List metadata about specific address
+        /// Obtain information about a specific address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>ApiResponse of NutlinkAddress</returns>
-        ApiResponse<NutlinkAddress> NutlinkAddressGetWithHttpInfo (string address);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>ApiResponse of AddressContent</returns>
+        ApiResponse<AddressContent> AddressesAddressGetWithHttpInfo (string address);
         /// <summary>
-        /// 
+        /// Address details
         /// </summary>
         /// <remarks>
-        /// List tickers for a specific metadata oracle
+        /// Obtain details about an address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkAddressTickers</returns>
-        NutlinkAddressTickers NutlinkAddressTickersGet (string address, int? count = null, int? page = null, string order = null);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>AddressContentTotal</returns>
+        AddressContentTotal AddressesAddressTotalGet (string address);
 
         /// <summary>
-        /// 
+        /// Address details
         /// </summary>
         /// <remarks>
-        /// List tickers for a specific metadata oracle
+        /// Obtain details about an address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkAddressTickers</returns>
-        ApiResponse<NutlinkAddressTickers> NutlinkAddressTickersGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>ApiResponse of AddressContentTotal</returns>
+        ApiResponse<AddressContentTotal> AddressesAddressTotalGetWithHttpInfo (string address);
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkAddressTicker</returns>
-        NutlinkAddressTicker NutlinkAddressTickersTickerGet (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>AddressTransactionsContent</returns>
+        AddressTransactionsContent AddressesAddressTransactionsGet (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null);
 
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkAddressTicker</returns>
-        ApiResponse<NutlinkAddressTicker> NutlinkAddressTickersTickerGetWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>ApiResponse of AddressTransactionsContent</returns>
+        ApiResponse<AddressTransactionsContent> AddressesAddressTransactionsGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null);
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkTickersTicker</returns>
-        NutlinkTickersTicker NutlinkTickersTickerGet (string ticker, int? count = null, int? page = null, string order = null);
+        /// <returns>AddressTxsContent</returns>
+        AddressTxsContent AddressesAddressTxsGet (string address, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkTickersTicker</returns>
-        ApiResponse<NutlinkTickersTicker> NutlinkTickersTickerGetWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of AddressTxsContent</returns>
+        ApiResponse<AddressTxsContent> AddressesAddressTxsGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// Address UTXOs
+        /// </summary>
+        /// <remarks>
+        /// UTXOs of the address.
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AddressUtxoContent</returns>
+        AddressUtxoContent AddressesAddressUtxosGet (string address, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// Address UTXOs
+        /// </summary>
+        /// <remarks>
+        /// UTXOs of the address.
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AddressUtxoContent</returns>
+        ApiResponse<AddressUtxoContent> AddressesAddressUtxosGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Specific address
         /// </summary>
         /// <remarks>
-        /// List metadata about specific address
+        /// Obtain information about a specific address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>Task of NutlinkAddress</returns>
-        System.Threading.Tasks.Task<NutlinkAddress> NutlinkAddressGetAsync (string address);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of AddressContent</returns>
+        System.Threading.Tasks.Task<AddressContent> AddressesAddressGetAsync (string address);
 
         /// <summary>
-        /// 
+        /// Specific address
         /// </summary>
         /// <remarks>
-        /// List metadata about specific address
+        /// Obtain information about a specific address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>Task of ApiResponse (NutlinkAddress)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NutlinkAddress>> NutlinkAddressGetAsyncWithHttpInfo (string address);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of ApiResponse (AddressContent)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddressContent>> AddressesAddressGetAsyncWithHttpInfo (string address);
         /// <summary>
-        /// 
+        /// Address details
         /// </summary>
         /// <remarks>
-        /// List tickers for a specific metadata oracle
+        /// Obtain details about an address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkAddressTickers</returns>
-        System.Threading.Tasks.Task<NutlinkAddressTickers> NutlinkAddressTickersGetAsync (string address, int? count = null, int? page = null, string order = null);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of AddressContentTotal</returns>
+        System.Threading.Tasks.Task<AddressContentTotal> AddressesAddressTotalGetAsync (string address);
 
         /// <summary>
-        /// 
+        /// Address details
         /// </summary>
         /// <remarks>
-        /// List tickers for a specific metadata oracle
+        /// Obtain details about an address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkAddressTickers)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTickers>> NutlinkAddressTickersGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of ApiResponse (AddressContentTotal)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddressContentTotal>> AddressesAddressTotalGetAsyncWithHttpInfo (string address);
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkAddressTicker</returns>
-        System.Threading.Tasks.Task<NutlinkAddressTicker> NutlinkAddressTickersTickerGetAsync (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>Task of AddressTransactionsContent</returns>
+        System.Threading.Tasks.Task<AddressTransactionsContent> AddressesAddressTransactionsGetAsync (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null);
 
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkAddressTicker)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTicker>> NutlinkAddressTickersTickerGetAsyncWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>Task of ApiResponse (AddressTransactionsContent)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddressTransactionsContent>> AddressesAddressTransactionsGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null);
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkTickersTicker</returns>
-        System.Threading.Tasks.Task<NutlinkTickersTicker> NutlinkTickersTickerGetAsync (string ticker, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of AddressTxsContent</returns>
+        System.Threading.Tasks.Task<AddressTxsContent> AddressesAddressTxsGetAsync (string address, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// 
+        /// Address transactions
         /// </summary>
         /// <remarks>
-        /// List of records of a specific ticker
+        /// Transactions on the address.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkTickersTicker)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NutlinkTickersTicker>> NutlinkTickersTickerGetAsyncWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (AddressTxsContent)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddressTxsContent>> AddressesAddressTxsGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// Address UTXOs
+        /// </summary>
+        /// <remarks>
+        /// UTXOs of the address.
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AddressUtxoContent</returns>
+        System.Threading.Tasks.Task<AddressUtxoContent> AddressesAddressUtxosGetAsync (string address, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// Address UTXOs
+        /// </summary>
+        /// <remarks>
+        /// UTXOs of the address.
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AddressUtxoContent)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddressUtxoContent>> AddressesAddressUtxosGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class NutLinkApi : INutLinkApi
+        public partial class CardanoAddressesApi : ICardanoAddressesApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NutLinkApi"/> class.
+        /// Initializes a new instance of the <see cref="CardanoAddressesApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public NutLinkApi(String basePath)
+        public CardanoAddressesApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -254,10 +300,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NutLinkApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoAddressesApi"/> class
         /// </summary>
         /// <returns></returns>
-        public NutLinkApi()
+        public CardanoAddressesApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -265,12 +311,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NutLinkApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoAddressesApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public NutLinkApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public CardanoAddressesApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -344,30 +390,30 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        ///  List metadata about specific address
+        /// Specific address Obtain information about a specific address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>NutlinkAddress</returns>
-        public NutlinkAddress NutlinkAddressGet (string address)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>AddressContent</returns>
+        public AddressContent AddressesAddressGet (string address)
         {
-             ApiResponse<NutlinkAddress> localVarResponse = NutlinkAddressGetWithHttpInfo(address);
+             ApiResponse<AddressContent> localVarResponse = AddressesAddressGetWithHttpInfo(address);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  List metadata about specific address
+        /// Specific address Obtain information about a specific address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>ApiResponse of NutlinkAddress</returns>
-        public ApiResponse< NutlinkAddress > NutlinkAddressGetWithHttpInfo (string address)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>ApiResponse of AddressContent</returns>
+        public ApiResponse< AddressContent > AddressesAddressGetWithHttpInfo (string address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressGet");
 
-            var localVarPath = "./nutlink/{address}";
+            var localVarPath = "./addresses/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -404,41 +450,41 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddress>(localVarStatusCode,
+            return new ApiResponse<AddressContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddress) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddress)));
+                (AddressContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressContent)));
         }
 
         /// <summary>
-        ///  List metadata about specific address
+        /// Specific address Obtain information about a specific address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>Task of NutlinkAddress</returns>
-        public async System.Threading.Tasks.Task<NutlinkAddress> NutlinkAddressGetAsync (string address)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of AddressContent</returns>
+        public async System.Threading.Tasks.Task<AddressContent> AddressesAddressGetAsync (string address)
         {
-             ApiResponse<NutlinkAddress> localVarResponse = await NutlinkAddressGetAsyncWithHttpInfo(address);
+             ApiResponse<AddressContent> localVarResponse = await AddressesAddressGetAsyncWithHttpInfo(address);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  List metadata about specific address
+        /// Specific address Obtain information about a specific address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <returns>Task of ApiResponse (NutlinkAddress)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddress>> NutlinkAddressGetAsyncWithHttpInfo (string address)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of ApiResponse (AddressContent)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddressContent>> AddressesAddressGetAsyncWithHttpInfo (string address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressGet");
 
-            var localVarPath = "./nutlink/{address}";
+            var localVarPath = "./addresses/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -475,46 +521,358 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddress>(localVarStatusCode,
+            return new ApiResponse<AddressContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddress) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddress)));
+                (AddressContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressContent)));
         }
 
         /// <summary>
-        ///  List tickers for a specific metadata oracle
+        /// Address details Obtain details about an address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkAddressTickers</returns>
-        public NutlinkAddressTickers NutlinkAddressTickersGet (string address, int? count = null, int? page = null, string order = null)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>AddressContentTotal</returns>
+        public AddressContentTotal AddressesAddressTotalGet (string address)
         {
-             ApiResponse<NutlinkAddressTickers> localVarResponse = NutlinkAddressTickersGetWithHttpInfo(address, count, page, order);
+             ApiResponse<AddressContentTotal> localVarResponse = AddressesAddressTotalGetWithHttpInfo(address);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  List tickers for a specific metadata oracle
+        /// Address details Obtain details about an address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkAddressTickers</returns>
-        public ApiResponse< NutlinkAddressTickers > NutlinkAddressTickersGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>ApiResponse of AddressContentTotal</returns>
+        public ApiResponse< AddressContentTotal > AddressesAddressTotalGetWithHttpInfo (string address)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTotalGet");
 
-            var localVarPath = "./nutlink/{address}/tickers";
+            var localVarPath = "./addresses/{address}/total";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddressesAddressTotalGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddressContentTotal>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AddressContentTotal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressContentTotal)));
+        }
+
+        /// <summary>
+        /// Address details Obtain details about an address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of AddressContentTotal</returns>
+        public async System.Threading.Tasks.Task<AddressContentTotal> AddressesAddressTotalGetAsync (string address)
+        {
+             ApiResponse<AddressContentTotal> localVarResponse = await AddressesAddressTotalGetAsyncWithHttpInfo(address);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Address details Obtain details about an address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <returns>Task of ApiResponse (AddressContentTotal)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddressContentTotal>> AddressesAddressTotalGetAsyncWithHttpInfo (string address)
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTotalGet");
+
+            var localVarPath = "./addresses/{address}/total";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddressesAddressTotalGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddressContentTotal>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AddressContentTotal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressContentTotal)));
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>AddressTransactionsContent</returns>
+        public AddressTransactionsContent AddressesAddressTransactionsGet (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null)
+        {
+             ApiResponse<AddressTransactionsContent> localVarResponse = AddressesAddressTransactionsGetWithHttpInfo(address, count, page, order, from, to);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>ApiResponse of AddressTransactionsContent</returns>
+        public ApiResponse< AddressTransactionsContent > AddressesAddressTransactionsGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null)
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTransactionsGet");
+
+            var localVarPath = "./addresses/{address}/transactions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (from != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
+            if (to != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddressesAddressTransactionsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddressTransactionsContent>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AddressTransactionsContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressTransactionsContent)));
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>Task of AddressTransactionsContent</returns>
+        public async System.Threading.Tasks.Task<AddressTransactionsContent> AddressesAddressTransactionsGetAsync (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null)
+        {
+             ApiResponse<AddressTransactionsContent> localVarResponse = await AddressesAddressTransactionsGetAsyncWithHttpInfo(address, count, page, order, from, to);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <param name="from">The block number and optionally also index from which (inclusive) to start search for results, concatenated using colon. Has to be lower than or equal to &#x60;to&#x60; parameter.  (optional)</param>
+        /// <param name="to">The block number and optionally also index where (inclusive) to end the search for results, concatenated using colon. Has to be higher than or equal to &#x60;from&#x60; parameter.  (optional)</param>
+        /// <returns>Task of ApiResponse (AddressTransactionsContent)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddressTransactionsContent>> AddressesAddressTransactionsGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null, string from = null, string to = null)
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTransactionsGet");
+
+            var localVarPath = "./addresses/{address}/transactions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (from != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "from", from)); // query parameter
+            if (to != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "to", to)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AddressesAddressTransactionsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AddressTransactionsContent>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AddressTransactionsContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressTransactionsContent)));
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AddressTxsContent</returns>
+        public AddressTxsContent AddressesAddressTxsGet (string address, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AddressTxsContent> localVarResponse = AddressesAddressTxsGetWithHttpInfo(address, count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Address transactions Transactions on the address.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AddressTxsContent</returns>
+        public ApiResponse< AddressTxsContent > AddressesAddressTxsGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTxsGet");
+
+            var localVarPath = "./addresses/{address}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -554,47 +912,47 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressTickersGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressTxsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddressTickers>(localVarStatusCode,
+            return new ApiResponse<AddressTxsContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddressTickers) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTickers)));
+                (AddressTxsContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressTxsContent)));
         }
 
         /// <summary>
-        ///  List tickers for a specific metadata oracle
+        /// Address transactions Transactions on the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkAddressTickers</returns>
-        public async System.Threading.Tasks.Task<NutlinkAddressTickers> NutlinkAddressTickersGetAsync (string address, int? count = null, int? page = null, string order = null)
+        /// <returns>Task of AddressTxsContent</returns>
+        public async System.Threading.Tasks.Task<AddressTxsContent> AddressesAddressTxsGetAsync (string address, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<NutlinkAddressTickers> localVarResponse = await NutlinkAddressTickersGetAsyncWithHttpInfo(address, count, page, order);
+             ApiResponse<AddressTxsContent> localVarResponse = await AddressesAddressTxsGetAsyncWithHttpInfo(address, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  List tickers for a specific metadata oracle
+        /// Address transactions Transactions on the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="address">Bech32 address.</param>
+        /// <param name="count">The number of transactions per page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkAddressTickers)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTickers>> NutlinkAddressTickersGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (AddressTxsContent)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddressTxsContent>> AddressesAddressTxsGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressTxsGet");
 
-            var localVarPath = "./nutlink/{address}/tickers";
+            var localVarPath = "./addresses/{address}/txs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -634,51 +992,46 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressTickersGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressTxsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddressTickers>(localVarStatusCode,
+            return new ApiResponse<AddressTxsContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddressTickers) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTickers)));
+                (AddressTxsContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressTxsContent)));
         }
 
         /// <summary>
-        ///  List of records of a specific ticker
+        /// Address UTXOs UTXOs of the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
+        /// <param name="address">Bech32 address.</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkAddressTicker</returns>
-        public NutlinkAddressTicker NutlinkAddressTickersTickerGet (string address, string ticker, int? count = null, int? page = null, string order = null)
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AddressUtxoContent</returns>
+        public AddressUtxoContent AddressesAddressUtxosGet (string address, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<NutlinkAddressTicker> localVarResponse = NutlinkAddressTickersTickerGetWithHttpInfo(address, ticker, count, page, order);
+             ApiResponse<AddressUtxoContent> localVarResponse = AddressesAddressUtxosGetWithHttpInfo(address, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  List of records of a specific ticker
+        /// Address UTXOs UTXOs of the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
+        /// <param name="address">Bech32 address.</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkAddressTicker</returns>
-        public ApiResponse< NutlinkAddressTicker > NutlinkAddressTickersTickerGetWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null)
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AddressUtxoContent</returns>
+        public ApiResponse< AddressUtxoContent > AddressesAddressUtxosGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
-            // verify the required parameter 'ticker' is set
-            if (ticker == null)
-                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressUtxosGet");
 
-            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
+            var localVarPath = "./addresses/{address}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -700,7 +1053,6 @@ namespace Blockfrost.Api.Gen.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
-            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -719,52 +1071,47 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressTickersTickerGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressUtxosGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddressTicker>(localVarStatusCode,
+            return new ApiResponse<AddressUtxoContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddressTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTicker)));
+                (AddressUtxoContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressUtxoContent)));
         }
 
         /// <summary>
-        ///  List of records of a specific ticker
+        /// Address UTXOs UTXOs of the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
+        /// <param name="address">Bech32 address.</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkAddressTicker</returns>
-        public async System.Threading.Tasks.Task<NutlinkAddressTicker> NutlinkAddressTickersTickerGetAsync (string address, string ticker, int? count = null, int? page = null, string order = null)
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AddressUtxoContent</returns>
+        public async System.Threading.Tasks.Task<AddressUtxoContent> AddressesAddressUtxosGetAsync (string address, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<NutlinkAddressTicker> localVarResponse = await NutlinkAddressTickersTickerGetAsyncWithHttpInfo(address, ticker, count, page, order);
+             ApiResponse<AddressUtxoContent> localVarResponse = await AddressesAddressUtxosGetAsyncWithHttpInfo(address, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  List of records of a specific ticker
+        /// Address UTXOs UTXOs of the address.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="address"></param>
-        /// <param name="ticker"></param>
+        /// <param name="address">Bech32 address.</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkAddressTicker)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTicker>> NutlinkAddressTickersTickerGetAsyncWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null)
+        /// <param name="order">Ordered by tx index in the block. The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AddressUtxoContent)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AddressUtxoContent>> AddressesAddressUtxosGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
         {
             // verify the required parameter 'address' is set
             if (address == null)
-                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
-            // verify the required parameter 'ticker' is set
-            if (ticker == null)
-                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
+                throw new ApiException(400, "Missing required parameter 'address' when calling CardanoAddressesApi->AddressesAddressUtxosGet");
 
-            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
+            var localVarPath = "./addresses/{address}/utxos";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -786,7 +1133,6 @@ namespace Blockfrost.Api.Gen.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
-            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -805,172 +1151,13 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("NutlinkAddressTickersTickerGet", localVarResponse);
+                Exception exception = ExceptionFactory("AddressesAddressUtxosGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<NutlinkAddressTicker>(localVarStatusCode,
+            return new ApiResponse<AddressUtxoContent>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkAddressTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTicker)));
-        }
-
-        /// <summary>
-        ///  List of records of a specific ticker
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>NutlinkTickersTicker</returns>
-        public NutlinkTickersTicker NutlinkTickersTickerGet (string ticker, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<NutlinkTickersTicker> localVarResponse = NutlinkTickersTickerGetWithHttpInfo(ticker, count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  List of records of a specific ticker
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of NutlinkTickersTicker</returns>
-        public ApiResponse< NutlinkTickersTicker > NutlinkTickersTickerGetWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'ticker' is set
-            if (ticker == null)
-                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
-
-            var localVarPath = "./nutlink/tickers/{ticker}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("NutlinkTickersTickerGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<NutlinkTickersTicker>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkTickersTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkTickersTicker)));
-        }
-
-        /// <summary>
-        ///  List of records of a specific ticker
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of NutlinkTickersTicker</returns>
-        public async System.Threading.Tasks.Task<NutlinkTickersTicker> NutlinkTickersTickerGetAsync (string ticker, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<NutlinkTickersTicker> localVarResponse = await NutlinkTickersTickerGetAsyncWithHttpInfo(ticker, count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  List of records of a specific ticker
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ticker"></param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (NutlinkTickersTicker)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NutlinkTickersTicker>> NutlinkTickersTickerGetAsyncWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'ticker' is set
-            if (ticker == null)
-                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
-
-            var localVarPath = "./nutlink/tickers/{ticker}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("NutlinkTickersTickerGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<NutlinkTickersTicker>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (NutlinkTickersTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkTickersTicker)));
+                (AddressUtxoContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AddressUtxoContent)));
         }
 
     }

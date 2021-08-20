@@ -14,523 +14,393 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ICardanoPoolsApi : IApiAccessor
+        public interface ICardanoAssetsApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// List of stake pools
+        /// Asset addresses
         /// </summary>
         /// <remarks>
-        /// List of registered stake pools.
+        /// List of a addresses containing a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolList</returns>
-        PoolList PoolsGet (int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// List of stake pools
-        /// </summary>
-        /// <remarks>
-        /// List of registered stake pools.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolList</returns>
-        ApiResponse<PoolList> PoolsGetWithHttpInfo (int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Stake pool blocks
-        /// </summary>
-        /// <remarks>
-        /// List of stake pools blocks.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolBlocks</returns>
-        PoolBlocks PoolsPoolIdBlocksGet (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>AssetAddresses</returns>
+        AssetAddresses AssetsAssetAddressesGet (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool blocks
+        /// Asset addresses
         /// </summary>
         /// <remarks>
-        /// List of stake pools blocks.
+        /// List of a addresses containing a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolBlocks</returns>
-        ApiResponse<PoolBlocks> PoolsPoolIdBlocksGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of AssetAddresses</returns>
+        ApiResponse<AssetAddresses> AssetsAssetAddressesGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Stake pool delegators
+        /// Specific asset
         /// </summary>
         /// <remarks>
-        /// List of current stake pools delegators.
+        /// Information about a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Asset</returns>
+        Asset AssetsAssetGet (string asset);
+
+        /// <summary>
+        /// Specific asset
+        /// </summary>
+        /// <remarks>
+        /// Information about a specific asset
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>ApiResponse of Asset</returns>
+        ApiResponse<Asset> AssetsAssetGetWithHttpInfo (string asset);
+        /// <summary>
+        /// Asset history
+        /// </summary>
+        /// <remarks>
+        /// History of a specific asset
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolDelegators</returns>
-        PoolDelegators PoolsPoolIdDelegatorsGet (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>AssetHistory</returns>
+        AssetHistory AssetsAssetHistoryGet (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool delegators
+        /// Asset history
         /// </summary>
         /// <remarks>
-        /// List of current stake pools delegators.
+        /// History of a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolDelegators</returns>
-        ApiResponse<PoolDelegators> PoolsPoolIdDelegatorsGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of AssetHistory</returns>
+        ApiResponse<AssetHistory> AssetsAssetHistoryGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Specific stake pool
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// Pool information.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Pool</returns>
-        Pool PoolsPoolIdGet (string poolId);
-
-        /// <summary>
-        /// Specific stake pool
-        /// </summary>
-        /// <remarks>
-        /// Pool information.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of Pool</returns>
-        ApiResponse<Pool> PoolsPoolIdGetWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool history
-        /// </summary>
-        /// <remarks>
-        /// History of stake pool parameters over epochs. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolHistory</returns>
-        PoolHistory PoolsPoolIdHistoryGet (string poolId, int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// Stake pool history
-        /// </summary>
-        /// <remarks>
-        /// History of stake pool parameters over epochs. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolHistory</returns>
-        ApiResponse<PoolHistory> PoolsPoolIdHistoryGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Stake pool metadata
-        /// </summary>
-        /// <remarks>
-        /// Stake pool registration metadata. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>InlineResponse2003</returns>
-        InlineResponse2003 PoolsPoolIdMetadataGet (string poolId);
-
-        /// <summary>
-        /// Stake pool metadata
-        /// </summary>
-        /// <remarks>
-        /// Stake pool registration metadata. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of InlineResponse2003</returns>
-        ApiResponse<InlineResponse2003> PoolsPoolIdMetadataGetWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool relays
-        /// </summary>
-        /// <remarks>
-        /// Relays of a stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>PoolRelays</returns>
-        PoolRelays PoolsPoolIdRelaysGet (string poolId);
-
-        /// <summary>
-        /// Stake pool relays
-        /// </summary>
-        /// <remarks>
-        /// Relays of a stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of PoolRelays</returns>
-        ApiResponse<PoolRelays> PoolsPoolIdRelaysGetWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool updates
-        /// </summary>
-        /// <remarks>
-        /// List of certificate updates to the stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolUpdates</returns>
-        PoolUpdates PoolsPoolIdUpdatesGet (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>AssetTransactions</returns>
+        AssetTransactions AssetsAssetTransactionsGet (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool updates
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of certificate updates to the stake pool.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolUpdates</returns>
-        ApiResponse<PoolUpdates> PoolsPoolIdUpdatesGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of AssetTransactions</returns>
+        ApiResponse<AssetTransactions> AssetsAssetTransactionsGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// List of retired stake pools
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of already retired pools.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolListRetire</returns>
-        PoolListRetire PoolsRetiredGet (int? count = null, int? page = null, string order = null);
+        /// <returns>AssetTxs</returns>
+        AssetTxs AssetsAssetTxsGet (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// List of retired stake pools
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of already retired pools.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolListRetire</returns>
-        ApiResponse<PoolListRetire> PoolsRetiredGetWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of AssetTxs</returns>
+        ApiResponse<AssetTxs> AssetsAssetTxsGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// List of retiring stake pools
+        /// Assets
         /// </summary>
         /// <remarks>
-        /// List of stake pools retiring in the upcoming epochs
+        /// List of assets.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolListRetire</returns>
-        PoolListRetire PoolsRetiringGet (int? count = null, int? page = null, string order = null);
+        /// <returns>Assets</returns>
+        Assets AssetsGet (int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// List of retiring stake pools
+        /// Assets
         /// </summary>
         /// <remarks>
-        /// List of stake pools retiring in the upcoming epochs
+        /// List of assets.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolListRetire</returns>
-        ApiResponse<PoolListRetire> PoolsRetiringGetWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of Assets</returns>
+        ApiResponse<Assets> AssetsGetWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// Assets of a specific policy
+        /// </summary>
+        /// <remarks>
+        /// List of asset minted under a specific policy
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="policyId">Specific policy_id</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AssetPolicy</returns>
+        AssetPolicy AssetsPolicyPolicyIdGet (string policyId, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// Assets of a specific policy
+        /// </summary>
+        /// <remarks>
+        /// List of asset minted under a specific policy
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="policyId">Specific policy_id</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AssetPolicy</returns>
+        ApiResponse<AssetPolicy> AssetsPolicyPolicyIdGetWithHttpInfo (string policyId, int? count = null, int? page = null, string order = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// List of stake pools
+        /// Asset addresses
         /// </summary>
         /// <remarks>
-        /// List of registered stake pools.
+        /// List of a addresses containing a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolList</returns>
-        System.Threading.Tasks.Task<PoolList> PoolsGetAsync (int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// List of stake pools
-        /// </summary>
-        /// <remarks>
-        /// List of registered stake pools.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolList>> PoolsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Stake pool blocks
-        /// </summary>
-        /// <remarks>
-        /// List of stake pools blocks.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolBlocks</returns>
-        System.Threading.Tasks.Task<PoolBlocks> PoolsPoolIdBlocksGetAsync (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of AssetAddresses</returns>
+        System.Threading.Tasks.Task<AssetAddresses> AssetsAssetAddressesGetAsync (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool blocks
+        /// Asset addresses
         /// </summary>
         /// <remarks>
-        /// List of stake pools blocks.
+        /// List of a addresses containing a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolBlocks)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolBlocks>> PoolsPoolIdBlocksGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (AssetAddresses)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetAddresses>> AssetsAssetAddressesGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Stake pool delegators
+        /// Specific asset
         /// </summary>
         /// <remarks>
-        /// List of current stake pools delegators.
+        /// Information about a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Task of Asset</returns>
+        System.Threading.Tasks.Task<Asset> AssetsAssetGetAsync (string asset);
+
+        /// <summary>
+        /// Specific asset
+        /// </summary>
+        /// <remarks>
+        /// Information about a specific asset
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Task of ApiResponse (Asset)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Asset>> AssetsAssetGetAsyncWithHttpInfo (string asset);
+        /// <summary>
+        /// Asset history
+        /// </summary>
+        /// <remarks>
+        /// History of a specific asset
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolDelegators</returns>
-        System.Threading.Tasks.Task<PoolDelegators> PoolsPoolIdDelegatorsGetAsync (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of AssetHistory</returns>
+        System.Threading.Tasks.Task<AssetHistory> AssetsAssetHistoryGetAsync (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool delegators
+        /// Asset history
         /// </summary>
         /// <remarks>
-        /// List of current stake pools delegators.
+        /// History of a specific asset
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolDelegators)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolDelegators>> PoolsPoolIdDelegatorsGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (AssetHistory)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetHistory>> AssetsAssetHistoryGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Specific stake pool
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// Pool information.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of Pool</returns>
-        System.Threading.Tasks.Task<Pool> PoolsPoolIdGetAsync (string poolId);
-
-        /// <summary>
-        /// Specific stake pool
-        /// </summary>
-        /// <remarks>
-        /// Pool information.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (Pool)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Pool>> PoolsPoolIdGetAsyncWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool history
-        /// </summary>
-        /// <remarks>
-        /// History of stake pool parameters over epochs. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolHistory</returns>
-        System.Threading.Tasks.Task<PoolHistory> PoolsPoolIdHistoryGetAsync (string poolId, int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// Stake pool history
-        /// </summary>
-        /// <remarks>
-        /// History of stake pool parameters over epochs. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolHistory)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolHistory>> PoolsPoolIdHistoryGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Stake pool metadata
-        /// </summary>
-        /// <remarks>
-        /// Stake pool registration metadata. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of InlineResponse2003</returns>
-        System.Threading.Tasks.Task<InlineResponse2003> PoolsPoolIdMetadataGetAsync (string poolId);
-
-        /// <summary>
-        /// Stake pool metadata
-        /// </summary>
-        /// <remarks>
-        /// Stake pool registration metadata. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> PoolsPoolIdMetadataGetAsyncWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool relays
-        /// </summary>
-        /// <remarks>
-        /// Relays of a stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of PoolRelays</returns>
-        System.Threading.Tasks.Task<PoolRelays> PoolsPoolIdRelaysGetAsync (string poolId);
-
-        /// <summary>
-        /// Stake pool relays
-        /// </summary>
-        /// <remarks>
-        /// Relays of a stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (PoolRelays)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolRelays>> PoolsPoolIdRelaysGetAsyncWithHttpInfo (string poolId);
-        /// <summary>
-        /// Stake pool updates
-        /// </summary>
-        /// <remarks>
-        /// List of certificate updates to the stake pool.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolUpdates</returns>
-        System.Threading.Tasks.Task<PoolUpdates> PoolsPoolIdUpdatesGetAsync (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of AssetTransactions</returns>
+        System.Threading.Tasks.Task<AssetTransactions> AssetsAssetTransactionsGetAsync (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Stake pool updates
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of certificate updates to the stake pool.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolUpdates)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolUpdates>> PoolsPoolIdUpdatesGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (AssetTransactions)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetTransactions>> AssetsAssetTransactionsGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// List of retired stake pools
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of already retired pools.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolListRetire</returns>
-        System.Threading.Tasks.Task<PoolListRetire> PoolsRetiredGetAsync (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of AssetTxs</returns>
+        System.Threading.Tasks.Task<AssetTxs> AssetsAssetTxsGetAsync (string asset, int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// List of retired stake pools
+        /// Asset transactions
         /// </summary>
         /// <remarks>
-        /// List of already retired pools.
+        /// List of a specific asset transactions
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolListRetire)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiredGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (AssetTxs)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetTxs>> AssetsAssetTxsGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// List of retiring stake pools
+        /// Assets
         /// </summary>
         /// <remarks>
-        /// List of stake pools retiring in the upcoming epochs
+        /// List of assets.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolListRetire</returns>
-        System.Threading.Tasks.Task<PoolListRetire> PoolsRetiringGetAsync (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of Assets</returns>
+        System.Threading.Tasks.Task<Assets> AssetsGetAsync (int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// List of retiring stake pools
+        /// Assets
         /// </summary>
         /// <remarks>
-        /// List of stake pools retiring in the upcoming epochs
+        /// List of assets.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolListRetire)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiringGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (Assets)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Assets>> AssetsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// Assets of a specific policy
+        /// </summary>
+        /// <remarks>
+        /// List of asset minted under a specific policy
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="policyId">Specific policy_id</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AssetPolicy</returns>
+        System.Threading.Tasks.Task<AssetPolicy> AssetsPolicyPolicyIdGetAsync (string policyId, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// Assets of a specific policy
+        /// </summary>
+        /// <remarks>
+        /// List of asset minted under a specific policy
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="policyId">Specific policy_id</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AssetPolicy)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AssetPolicy>> AssetsPolicyPolicyIdGetAsyncWithHttpInfo (string policyId, int? count = null, int? page = null, string order = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class CardanoPoolsApi : ICardanoPoolsApi
+        public partial class CardanoAssetsApi : ICardanoAssetsApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoPoolsApi"/> class.
+        /// Initializes a new instance of the <see cref="CardanoAssetsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public CardanoPoolsApi(String basePath)
+        public CardanoAssetsApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -538,10 +408,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoPoolsApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoAssetsApi"/> class
         /// </summary>
         /// <returns></returns>
-        public CardanoPoolsApi()
+        public CardanoAssetsApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -549,12 +419,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoPoolsApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoAssetsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public CardanoPoolsApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public CardanoAssetsApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -628,31 +498,808 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// List of stake pools List of registered stake pools.
+        /// Asset addresses List of a addresses containing a specific asset
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolList</returns>
-        public PoolList PoolsGet (int? count = null, int? page = null, string order = null)
+        /// <returns>AssetAddresses</returns>
+        public AssetAddresses AssetsAssetAddressesGet (string asset, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<PoolList> localVarResponse = PoolsGetWithHttpInfo(count, page, order);
+             ApiResponse<AssetAddresses> localVarResponse = AssetsAssetAddressesGetWithHttpInfo(asset, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List of stake pools List of registered stake pools.
+        /// Asset addresses List of a addresses containing a specific asset
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolList</returns>
-        public ApiResponse< PoolList > PoolsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>ApiResponse of AssetAddresses</returns>
+        public ApiResponse< AssetAddresses > AssetsAssetAddressesGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetAddressesGet");
+
+            var localVarPath = "./assets/{asset}/addresses";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetAddressesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetAddresses>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetAddresses) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetAddresses)));
+        }
+
+        /// <summary>
+        /// Asset addresses List of a addresses containing a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AssetAddresses</returns>
+        public async System.Threading.Tasks.Task<AssetAddresses> AssetsAssetAddressesGetAsync (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetAddresses> localVarResponse = await AssetsAssetAddressesGetAsyncWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Asset addresses List of a addresses containing a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AssetAddresses)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AssetAddresses>> AssetsAssetAddressesGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetAddressesGet");
+
+            var localVarPath = "./assets/{asset}/addresses";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetAddressesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetAddresses>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetAddresses) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetAddresses)));
+        }
+
+        /// <summary>
+        /// Specific asset Information about a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Asset</returns>
+        public Asset AssetsAssetGet (string asset)
+        {
+             ApiResponse<Asset> localVarResponse = AssetsAssetGetWithHttpInfo(asset);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Specific asset Information about a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>ApiResponse of Asset</returns>
+        public ApiResponse< Asset > AssetsAssetGetWithHttpInfo (string asset)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetGet");
+
+            var localVarPath = "./assets/{asset}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Asset>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (Asset) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Asset)));
+        }
+
+        /// <summary>
+        /// Specific asset Information about a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Task of Asset</returns>
+        public async System.Threading.Tasks.Task<Asset> AssetsAssetGetAsync (string asset)
+        {
+             ApiResponse<Asset> localVarResponse = await AssetsAssetGetAsyncWithHttpInfo(asset);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Specific asset Information about a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <returns>Task of ApiResponse (Asset)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Asset>> AssetsAssetGetAsyncWithHttpInfo (string asset)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetGet");
+
+            var localVarPath = "./assets/{asset}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Asset>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (Asset) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Asset)));
+        }
+
+        /// <summary>
+        /// Asset history History of a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AssetHistory</returns>
+        public AssetHistory AssetsAssetHistoryGet (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetHistory> localVarResponse = AssetsAssetHistoryGetWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asset history History of a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AssetHistory</returns>
+        public ApiResponse< AssetHistory > AssetsAssetHistoryGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetHistoryGet");
+
+            var localVarPath = "./assets/{asset}/history";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetHistoryGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetHistory>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetHistory) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetHistory)));
+        }
+
+        /// <summary>
+        /// Asset history History of a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AssetHistory</returns>
+        public async System.Threading.Tasks.Task<AssetHistory> AssetsAssetHistoryGetAsync (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetHistory> localVarResponse = await AssetsAssetHistoryGetAsyncWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Asset history History of a specific asset
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AssetHistory)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AssetHistory>> AssetsAssetHistoryGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetHistoryGet");
+
+            var localVarPath = "./assets/{asset}/history";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetHistoryGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetHistory>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetHistory) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetHistory)));
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AssetTransactions</returns>
+        public AssetTransactions AssetsAssetTransactionsGet (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetTransactions> localVarResponse = AssetsAssetTransactionsGetWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AssetTransactions</returns>
+        public ApiResponse< AssetTransactions > AssetsAssetTransactionsGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTransactionsGet");
+
+            var localVarPath = "./assets/{asset}/transactions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetTransactionsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetTransactions>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetTransactions) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetTransactions)));
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AssetTransactions</returns>
+        public async System.Threading.Tasks.Task<AssetTransactions> AssetsAssetTransactionsGetAsync (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetTransactions> localVarResponse = await AssetsAssetTransactionsGetAsyncWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AssetTransactions)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AssetTransactions>> AssetsAssetTransactionsGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTransactionsGet");
+
+            var localVarPath = "./assets/{asset}/transactions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetTransactionsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetTransactions>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetTransactions) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetTransactions)));
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>AssetTxs</returns>
+        public AssetTxs AssetsAssetTxsGet (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetTxs> localVarResponse = AssetsAssetTxsGetWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of AssetTxs</returns>
+        public ApiResponse< AssetTxs > AssetsAssetTxsGetWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTxsGet");
+
+            var localVarPath = "./assets/{asset}/txs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetTxsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetTxs>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetTxs) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetTxs)));
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of AssetTxs</returns>
+        public async System.Threading.Tasks.Task<AssetTxs> AssetsAssetTxsGetAsync (string asset, int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<AssetTxs> localVarResponse = await AssetsAssetTxsGetAsyncWithHttpInfo(asset, count, page, order);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Asset transactions List of a specific asset transactions
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asset">Concatenation of the policy_id and hex-encoded asset_name</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (AssetTxs)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AssetTxs>> AssetsAssetTxsGetAsyncWithHttpInfo (string asset, int? count = null, int? page = null, string order = null)
+        {
+            // verify the required parameter 'asset' is set
+            if (asset == null)
+                throw new ApiException(400, "Missing required parameter 'asset' when calling CardanoAssetsApi->AssetsAssetTxsGet");
+
+            var localVarPath = "./assets/{asset}/txs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asset != null) localVarPathParams.Add("asset", this.Configuration.ApiClient.ParameterToString(asset)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AssetsAssetTxsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AssetTxs>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (AssetTxs) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetTxs)));
+        }
+
+        /// <summary>
+        /// Assets List of assets.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Assets</returns>
+        public Assets AssetsGet (int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<Assets> localVarResponse = AssetsGetWithHttpInfo(count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assets List of assets.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of Assets</returns>
+        public ApiResponse< Assets > AssetsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools";
+            var localVarPath = "./assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -691,42 +1338,42 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PoolsGet", localVarResponse);
+                Exception exception = ExceptionFactory("AssetsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<PoolList>(localVarStatusCode,
+            return new ApiResponse<Assets>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolList)));
+                (Assets) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Assets)));
         }
 
         /// <summary>
-        /// List of stake pools List of registered stake pools.
+        /// Assets List of assets.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolList</returns>
-        public async System.Threading.Tasks.Task<PoolList> PoolsGetAsync (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of Assets</returns>
+        public async System.Threading.Tasks.Task<Assets> AssetsGetAsync (int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<PoolList> localVarResponse = await PoolsGetAsyncWithHttpInfo(count, page, order);
+             ApiResponse<Assets> localVarResponse = await AssetsGetAsyncWithHttpInfo(count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// List of stake pools List of registered stake pools.
+        /// Assets List of assets.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolList>> PoolsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (Assets)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Assets>> AssetsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./pools";
+            var localVarPath = "./assets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -765,46 +1412,46 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PoolsGet", localVarResponse);
+                Exception exception = ExceptionFactory("AssetsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<PoolList>(localVarStatusCode,
+            return new ApiResponse<Assets>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolList) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolList)));
+                (Assets) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Assets)));
         }
 
         /// <summary>
-        /// Stake pool blocks List of stake pools blocks.
+        /// Assets of a specific policy List of asset minted under a specific policy
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="policyId">Specific policy_id</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolBlocks</returns>
-        public PoolBlocks PoolsPoolIdBlocksGet (string poolId, int? count = null, int? page = null, string order = null)
+        /// <returns>AssetPolicy</returns>
+        public AssetPolicy AssetsPolicyPolicyIdGet (string policyId, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<PoolBlocks> localVarResponse = PoolsPoolIdBlocksGetWithHttpInfo(poolId, count, page, order);
+             ApiResponse<AssetPolicy> localVarResponse = AssetsPolicyPolicyIdGetWithHttpInfo(policyId, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Stake pool blocks List of stake pools blocks.
+        /// Assets of a specific policy List of asset minted under a specific policy
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="policyId">Specific policy_id</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolBlocks</returns>
-        public ApiResponse< PoolBlocks > PoolsPoolIdBlocksGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
+        /// <returns>ApiResponse of AssetPolicy</returns>
+        public ApiResponse< AssetPolicy > AssetsPolicyPolicyIdGetWithHttpInfo (string policyId, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdBlocksGet");
+            // verify the required parameter 'policyId' is set
+            if (policyId == null)
+                throw new ApiException(400, "Missing required parameter 'policyId' when calling CardanoAssetsApi->AssetsPolicyPolicyIdGet");
 
-            var localVarPath = "./pools/{pool_id}/blocks";
+            var localVarPath = "./assets/policy/{policy_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -825,7 +1472,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
+            if (policyId != null) localVarPathParams.Add("policy_id", this.Configuration.ApiClient.ParameterToString(policyId)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -844,47 +1491,47 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PoolsPoolIdBlocksGet", localVarResponse);
+                Exception exception = ExceptionFactory("AssetsPolicyPolicyIdGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<PoolBlocks>(localVarStatusCode,
+            return new ApiResponse<AssetPolicy>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolBlocks) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolBlocks)));
+                (AssetPolicy) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetPolicy)));
         }
 
         /// <summary>
-        /// Stake pool blocks List of stake pools blocks.
+        /// Assets of a specific policy List of asset minted under a specific policy
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="policyId">Specific policy_id</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolBlocks</returns>
-        public async System.Threading.Tasks.Task<PoolBlocks> PoolsPoolIdBlocksGetAsync (string poolId, int? count = null, int? page = null, string order = null)
+        /// <returns>Task of AssetPolicy</returns>
+        public async System.Threading.Tasks.Task<AssetPolicy> AssetsPolicyPolicyIdGetAsync (string policyId, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<PoolBlocks> localVarResponse = await PoolsPoolIdBlocksGetAsyncWithHttpInfo(poolId, count, page, order);
+             ApiResponse<AssetPolicy> localVarResponse = await AssetsPolicyPolicyIdGetAsyncWithHttpInfo(policyId, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Stake pool blocks List of stake pools blocks.
+        /// Assets of a specific policy List of asset minted under a specific policy
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
+        /// <param name="policyId">Specific policy_id</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolBlocks)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolBlocks>> PoolsPoolIdBlocksGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (AssetPolicy)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AssetPolicy>> AssetsPolicyPolicyIdGetAsyncWithHttpInfo (string policyId, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdBlocksGet");
+            // verify the required parameter 'policyId' is set
+            if (policyId == null)
+                throw new ApiException(400, "Missing required parameter 'policyId' when calling CardanoAssetsApi->AssetsPolicyPolicyIdGet");
 
-            var localVarPath = "./pools/{pool_id}/blocks";
+            var localVarPath = "./assets/policy/{policy_id}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -905,7 +1552,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
+            if (policyId != null) localVarPathParams.Add("policy_id", this.Configuration.ApiClient.ParameterToString(policyId)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -924,1207 +1571,13 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PoolsPoolIdBlocksGet", localVarResponse);
+                Exception exception = ExceptionFactory("AssetsPolicyPolicyIdGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<PoolBlocks>(localVarStatusCode,
+            return new ApiResponse<AssetPolicy>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolBlocks) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolBlocks)));
-        }
-
-        /// <summary>
-        /// Stake pool delegators List of current stake pools delegators.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolDelegators</returns>
-        public PoolDelegators PoolsPoolIdDelegatorsGet (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolDelegators> localVarResponse = PoolsPoolIdDelegatorsGetWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Stake pool delegators List of current stake pools delegators.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolDelegators</returns>
-        public ApiResponse< PoolDelegators > PoolsPoolIdDelegatorsGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdDelegatorsGet");
-
-            var localVarPath = "./pools/{pool_id}/delegators";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdDelegatorsGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolDelegators>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolDelegators) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolDelegators)));
-        }
-
-        /// <summary>
-        /// Stake pool delegators List of current stake pools delegators.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolDelegators</returns>
-        public async System.Threading.Tasks.Task<PoolDelegators> PoolsPoolIdDelegatorsGetAsync (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolDelegators> localVarResponse = await PoolsPoolIdDelegatorsGetAsyncWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Stake pool delegators List of current stake pools delegators.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolDelegators)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolDelegators>> PoolsPoolIdDelegatorsGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdDelegatorsGet");
-
-            var localVarPath = "./pools/{pool_id}/delegators";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdDelegatorsGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolDelegators>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolDelegators) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolDelegators)));
-        }
-
-        /// <summary>
-        /// Specific stake pool Pool information.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Pool</returns>
-        public Pool PoolsPoolIdGet (string poolId)
-        {
-             ApiResponse<Pool> localVarResponse = PoolsPoolIdGetWithHttpInfo(poolId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Specific stake pool Pool information.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of Pool</returns>
-        public ApiResponse< Pool > PoolsPoolIdGetWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdGet");
-
-            var localVarPath = "./pools/{pool_id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Pool>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (Pool) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Pool)));
-        }
-
-        /// <summary>
-        /// Specific stake pool Pool information.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of Pool</returns>
-        public async System.Threading.Tasks.Task<Pool> PoolsPoolIdGetAsync (string poolId)
-        {
-             ApiResponse<Pool> localVarResponse = await PoolsPoolIdGetAsyncWithHttpInfo(poolId);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Specific stake pool Pool information.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (Pool)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Pool>> PoolsPoolIdGetAsyncWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdGet");
-
-            var localVarPath = "./pools/{pool_id}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Pool>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (Pool) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Pool)));
-        }
-
-        /// <summary>
-        /// Stake pool history History of stake pool parameters over epochs. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolHistory</returns>
-        public PoolHistory PoolsPoolIdHistoryGet (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolHistory> localVarResponse = PoolsPoolIdHistoryGetWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Stake pool history History of stake pool parameters over epochs. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolHistory</returns>
-        public ApiResponse< PoolHistory > PoolsPoolIdHistoryGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdHistoryGet");
-
-            var localVarPath = "./pools/{pool_id}/history";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdHistoryGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolHistory>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolHistory) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolHistory)));
-        }
-
-        /// <summary>
-        /// Stake pool history History of stake pool parameters over epochs. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolHistory</returns>
-        public async System.Threading.Tasks.Task<PoolHistory> PoolsPoolIdHistoryGetAsync (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolHistory> localVarResponse = await PoolsPoolIdHistoryGetAsyncWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Stake pool history History of stake pool parameters over epochs. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolHistory)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolHistory>> PoolsPoolIdHistoryGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdHistoryGet");
-
-            var localVarPath = "./pools/{pool_id}/history";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdHistoryGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolHistory>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolHistory) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolHistory)));
-        }
-
-        /// <summary>
-        /// Stake pool metadata Stake pool registration metadata. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>InlineResponse2003</returns>
-        public InlineResponse2003 PoolsPoolIdMetadataGet (string poolId)
-        {
-             ApiResponse<InlineResponse2003> localVarResponse = PoolsPoolIdMetadataGetWithHttpInfo(poolId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Stake pool metadata Stake pool registration metadata. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of InlineResponse2003</returns>
-        public ApiResponse< InlineResponse2003 > PoolsPoolIdMetadataGetWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdMetadataGet");
-
-            var localVarPath = "./pools/{pool_id}/metadata";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdMetadataGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse2003>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
-        }
-
-        /// <summary>
-        /// Stake pool metadata Stake pool registration metadata. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of InlineResponse2003</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2003> PoolsPoolIdMetadataGetAsync (string poolId)
-        {
-             ApiResponse<InlineResponse2003> localVarResponse = await PoolsPoolIdMetadataGetAsyncWithHttpInfo(poolId);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Stake pool metadata Stake pool registration metadata. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (InlineResponse2003)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> PoolsPoolIdMetadataGetAsyncWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdMetadataGet");
-
-            var localVarPath = "./pools/{pool_id}/metadata";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdMetadataGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse2003>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
-        }
-
-        /// <summary>
-        /// Stake pool relays Relays of a stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>PoolRelays</returns>
-        public PoolRelays PoolsPoolIdRelaysGet (string poolId)
-        {
-             ApiResponse<PoolRelays> localVarResponse = PoolsPoolIdRelaysGetWithHttpInfo(poolId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Stake pool relays Relays of a stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>ApiResponse of PoolRelays</returns>
-        public ApiResponse< PoolRelays > PoolsPoolIdRelaysGetWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdRelaysGet");
-
-            var localVarPath = "./pools/{pool_id}/relays";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdRelaysGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolRelays>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolRelays) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolRelays)));
-        }
-
-        /// <summary>
-        /// Stake pool relays Relays of a stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of PoolRelays</returns>
-        public async System.Threading.Tasks.Task<PoolRelays> PoolsPoolIdRelaysGetAsync (string poolId)
-        {
-             ApiResponse<PoolRelays> localVarResponse = await PoolsPoolIdRelaysGetAsyncWithHttpInfo(poolId);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Stake pool relays Relays of a stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <returns>Task of ApiResponse (PoolRelays)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolRelays>> PoolsPoolIdRelaysGetAsyncWithHttpInfo (string poolId)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdRelaysGet");
-
-            var localVarPath = "./pools/{pool_id}/relays";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdRelaysGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolRelays>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolRelays) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolRelays)));
-        }
-
-        /// <summary>
-        /// Stake pool updates List of certificate updates to the stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolUpdates</returns>
-        public PoolUpdates PoolsPoolIdUpdatesGet (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolUpdates> localVarResponse = PoolsPoolIdUpdatesGetWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Stake pool updates List of certificate updates to the stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolUpdates</returns>
-        public ApiResponse< PoolUpdates > PoolsPoolIdUpdatesGetWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdUpdatesGet");
-
-            var localVarPath = "./pools/{pool_id}/updates";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdUpdatesGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolUpdates>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolUpdates) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolUpdates)));
-        }
-
-        /// <summary>
-        /// Stake pool updates List of certificate updates to the stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolUpdates</returns>
-        public async System.Threading.Tasks.Task<PoolUpdates> PoolsPoolIdUpdatesGetAsync (string poolId, int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolUpdates> localVarResponse = await PoolsPoolIdUpdatesGetAsyncWithHttpInfo(poolId, count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Stake pool updates List of certificate updates to the stake pool.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="poolId">Bech32 or hexadecimal pool ID.</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolUpdates)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolUpdates>> PoolsPoolIdUpdatesGetAsyncWithHttpInfo (string poolId, int? count = null, int? page = null, string order = null)
-        {
-            // verify the required parameter 'poolId' is set
-            if (poolId == null)
-                throw new ApiException(400, "Missing required parameter 'poolId' when calling CardanoPoolsApi->PoolsPoolIdUpdatesGet");
-
-            var localVarPath = "./pools/{pool_id}/updates";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (poolId != null) localVarPathParams.Add("pool_id", this.Configuration.ApiClient.ParameterToString(poolId)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsPoolIdUpdatesGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolUpdates>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolUpdates) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolUpdates)));
-        }
-
-        /// <summary>
-        /// List of retired stake pools List of already retired pools.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolListRetire</returns>
-        public PoolListRetire PoolsRetiredGet (int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolListRetire> localVarResponse = PoolsRetiredGetWithHttpInfo(count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// List of retired stake pools List of already retired pools.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolListRetire</returns>
-        public ApiResponse< PoolListRetire > PoolsRetiredGetWithHttpInfo (int? count = null, int? page = null, string order = null)
-        {
-
-            var localVarPath = "./pools/retired";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsRetiredGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolListRetire>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolListRetire) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolListRetire)));
-        }
-
-        /// <summary>
-        /// List of retired stake pools List of already retired pools.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolListRetire</returns>
-        public async System.Threading.Tasks.Task<PoolListRetire> PoolsRetiredGetAsync (int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolListRetire> localVarResponse = await PoolsRetiredGetAsyncWithHttpInfo(count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// List of retired stake pools List of already retired pools.
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The numbers of pools per page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolListRetire)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiredGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
-        {
-
-            var localVarPath = "./pools/retired";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsRetiredGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolListRetire>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolListRetire) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolListRetire)));
-        }
-
-        /// <summary>
-        /// List of retiring stake pools List of stake pools retiring in the upcoming epochs
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>PoolListRetire</returns>
-        public PoolListRetire PoolsRetiringGet (int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolListRetire> localVarResponse = PoolsRetiringGetWithHttpInfo(count, page, order);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// List of retiring stake pools List of stake pools retiring in the upcoming epochs
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of PoolListRetire</returns>
-        public ApiResponse< PoolListRetire > PoolsRetiringGetWithHttpInfo (int? count = null, int? page = null, string order = null)
-        {
-
-            var localVarPath = "./pools/retiring";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsRetiringGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolListRetire>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolListRetire) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolListRetire)));
-        }
-
-        /// <summary>
-        /// List of retiring stake pools List of stake pools retiring in the upcoming epochs
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of PoolListRetire</returns>
-        public async System.Threading.Tasks.Task<PoolListRetire> PoolsRetiringGetAsync (int? count = null, int? page = null, string order = null)
-        {
-             ApiResponse<PoolListRetire> localVarResponse = await PoolsRetiringGetAsyncWithHttpInfo(count, page, order);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// List of retiring stake pools List of stake pools retiring in the upcoming epochs
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (PoolListRetire)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PoolListRetire>> PoolsRetiringGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
-        {
-
-            var localVarPath = "./pools/retiring";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PoolsRetiringGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<PoolListRetire>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (PoolListRetire) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PoolListRetire)));
+                (AssetPolicy) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AssetPolicy)));
         }
 
     }

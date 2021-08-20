@@ -14,189 +14,207 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ICardanoMetadataApi : IApiAccessor
+        public interface IIPFSPinsApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// Transaction metadata labels
+        /// Pin an object
         /// </summary>
         /// <remarks>
-        /// List of all used transaction metadata labels. 
+        /// Pinned objects are counted in your user storage quota.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabels</returns>
-        TxMetadataLabels MetadataTxsLabelsGet (int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2005</returns>
+        InlineResponse2005 IpfsPinAddIPFSPathPost (string iPFSPath);
 
         /// <summary>
-        /// Transaction metadata labels
+        /// Pin an object
         /// </summary>
         /// <remarks>
-        /// List of all used transaction metadata labels. 
+        /// Pinned objects are counted in your user storage quota.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabels</returns>
-        ApiResponse<TxMetadataLabels> MetadataTxsLabelsGetWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2005</returns>
+        ApiResponse<InlineResponse2005> IpfsPinAddIPFSPathPostWithHttpInfo (string iPFSPath);
         /// <summary>
-        /// Transaction metadata content in CBOR
+        /// List pinned objects
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// List objects pinned to local storage
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabelCbor</returns>
-        TxMetadataLabelCbor MetadataTxsLabelsLabelCborGet (string label, int? count = null, int? page = null, string order = null);
+        /// <returns>List&lt;InlineResponse2006&gt;</returns>
+        List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Transaction metadata content in CBOR
+        /// List pinned objects
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// List objects pinned to local storage
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabelCbor</returns>
-        ApiResponse<TxMetadataLabelCbor> MetadataTxsLabelsLabelCborGetWithHttpInfo (string label, int? count = null, int? page = null, string order = null);
+        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
+        ApiResponse<List<InlineResponse2006>> IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Transaction metadata content in JSON
+        /// Get details about pinned object
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// Get information about locally pinned IPFS object
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabelJson</returns>
-        TxMetadataLabelJson MetadataTxsLabelsLabelGet (string label, int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2007</returns>
+        InlineResponse2007 IpfsPinListIPFSPathGet (string iPFSPath);
 
         /// <summary>
-        /// Transaction metadata content in JSON
+        /// Get details about pinned object
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// Get information about locally pinned IPFS object
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabelJson</returns>
-        ApiResponse<TxMetadataLabelJson> MetadataTxsLabelsLabelGetWithHttpInfo (string label, int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2007</returns>
+        ApiResponse<InlineResponse2007> IpfsPinListIPFSPathGetWithHttpInfo (string iPFSPath);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Remove pinned objects from local storage
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2008</returns>
+        InlineResponse2008 IpfsPinRemoveIPFSPathPost (string iPFSPath);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Remove pinned objects from local storage
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2008</returns>
+        ApiResponse<InlineResponse2008> IpfsPinRemoveIPFSPathPostWithHttpInfo (string iPFSPath);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Transaction metadata labels
+        /// Pin an object
         /// </summary>
         /// <remarks>
-        /// List of all used transaction metadata labels. 
+        /// Pinned objects are counted in your user storage quota.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabels</returns>
-        System.Threading.Tasks.Task<TxMetadataLabels> MetadataTxsLabelsGetAsync (int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2005</returns>
+        System.Threading.Tasks.Task<InlineResponse2005> IpfsPinAddIPFSPathPostAsync (string iPFSPath);
 
         /// <summary>
-        /// Transaction metadata labels
+        /// Pin an object
         /// </summary>
         /// <remarks>
-        /// List of all used transaction metadata labels. 
+        /// Pinned objects are counted in your user storage quota.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabels)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TxMetadataLabels>> MetadataTxsLabelsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> IpfsPinAddIPFSPathPostAsyncWithHttpInfo (string iPFSPath);
         /// <summary>
-        /// Transaction metadata content in CBOR
+        /// List pinned objects
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// List objects pinned to local storage
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabelCbor</returns>
-        System.Threading.Tasks.Task<TxMetadataLabelCbor> MetadataTxsLabelsLabelCborGetAsync (string label, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
+        System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null);
 
         /// <summary>
-        /// Transaction metadata content in CBOR
+        /// List pinned objects
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// List objects pinned to local storage
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabelCbor)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TxMetadataLabelCbor>> MetadataTxsLabelsLabelCborGetAsyncWithHttpInfo (string label, int? count = null, int? page = null, string order = null);
+        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
         /// <summary>
-        /// Transaction metadata content in JSON
+        /// Get details about pinned object
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// Get information about locally pinned IPFS object
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabelJson</returns>
-        System.Threading.Tasks.Task<TxMetadataLabelJson> MetadataTxsLabelsLabelGetAsync (string label, int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2007</returns>
+        System.Threading.Tasks.Task<InlineResponse2007> IpfsPinListIPFSPathGetAsync (string iPFSPath);
 
         /// <summary>
-        /// Transaction metadata content in JSON
+        /// Get details about pinned object
         /// </summary>
         /// <remarks>
-        /// Transaction metadata per label.
+        /// Get information about locally pinned IPFS object
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabelJson)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TxMetadataLabelJson>> MetadataTxsLabelsLabelGetAsyncWithHttpInfo (string label, int? count = null, int? page = null, string order = null);
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> IpfsPinListIPFSPathGetAsyncWithHttpInfo (string iPFSPath);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Remove pinned objects from local storage
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2008</returns>
+        System.Threading.Tasks.Task<InlineResponse2008> IpfsPinRemoveIPFSPathPostAsync (string iPFSPath);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Remove pinned objects from local storage
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo (string iPFSPath);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class CardanoMetadataApi : ICardanoMetadataApi
+        public partial class IPFSPinsApi : IIPFSPinsApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoMetadataApi"/> class.
+        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public CardanoMetadataApi(String basePath)
+        public IPFSPinsApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -204,10 +222,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoMetadataApi"/> class
+        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class
         /// </summary>
         /// <returns></returns>
-        public CardanoMetadataApi()
+        public IPFSPinsApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -215,12 +233,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoMetadataApi"/> class
+        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public CardanoMetadataApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public IPFSPinsApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -294,31 +312,172 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Transaction metadata labels List of all used transaction metadata labels. 
+        /// Pin an object Pinned objects are counted in your user storage quota.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabels</returns>
-        public TxMetadataLabels MetadataTxsLabelsGet (int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2005</returns>
+        public InlineResponse2005 IpfsPinAddIPFSPathPost (string iPFSPath)
         {
-             ApiResponse<TxMetadataLabels> localVarResponse = MetadataTxsLabelsGetWithHttpInfo(count, page, order);
+             ApiResponse<InlineResponse2005> localVarResponse = IpfsPinAddIPFSPathPostWithHttpInfo(iPFSPath);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Transaction metadata labels List of all used transaction metadata labels. 
+        /// Pin an object Pinned objects are counted in your user storage quota.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2005</returns>
+        public ApiResponse< InlineResponse2005 > IpfsPinAddIPFSPathPostWithHttpInfo (string iPFSPath)
+        {
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
+
+            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("IpfsPinAddIPFSPathPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse2005>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+        }
+
+        /// <summary>
+        /// Pin an object Pinned objects are counted in your user storage quota.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2005</returns>
+        public async System.Threading.Tasks.Task<InlineResponse2005> IpfsPinAddIPFSPathPostAsync (string iPFSPath)
+        {
+             ApiResponse<InlineResponse2005> localVarResponse = await IpfsPinAddIPFSPathPostAsyncWithHttpInfo(iPFSPath);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Pin an object Pinned objects are counted in your user storage quota.
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> IpfsPinAddIPFSPathPostAsyncWithHttpInfo (string iPFSPath)
+        {
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
+
+            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            // authentication (ApiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
+            {
+                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("IpfsPinAddIPFSPathPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse2005>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
+                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+        }
+
+        /// <summary>
+        /// List pinned objects List objects pinned to local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabels</returns>
-        public ApiResponse< TxMetadataLabels > MetadataTxsLabelsGetWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>List&lt;InlineResponse2006&gt;</returns>
+        public List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
+        {
+             ApiResponse<List<InlineResponse2006>> localVarResponse = IpfsPinListGetWithHttpInfo(count, page, order);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List pinned objects List objects pinned to local storage
+        /// </summary>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
+        public ApiResponse< List<InlineResponse2006> > IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./metadata/txs/labels";
+            var localVarPath = "./ipfs/pin/list/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -357,42 +516,42 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinListGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabels>(localVarStatusCode,
+            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabels) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabels)));
+                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
         }
 
         /// <summary>
-        /// Transaction metadata labels List of all used transaction metadata labels. 
+        /// List pinned objects List objects pinned to local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabels</returns>
-        public async System.Threading.Tasks.Task<TxMetadataLabels> MetadataTxsLabelsGetAsync (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
+        public async System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<TxMetadataLabels> localVarResponse = await MetadataTxsLabelsGetAsyncWithHttpInfo(count, page, order);
+             ApiResponse<List<InlineResponse2006>> localVarResponse = await IpfsPinListGetAsyncWithHttpInfo(count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Transaction metadata labels List of all used transaction metadata labels. 
+        /// List pinned objects List objects pinned to local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabels)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TxMetadataLabels>> MetadataTxsLabelsGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
         {
 
-            var localVarPath = "./metadata/txs/labels";
+            var localVarPath = "./ipfs/pin/list/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -431,46 +590,40 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinListGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabels>(localVarStatusCode,
+            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabels) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabels)));
+                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
         }
 
         /// <summary>
-        /// Transaction metadata content in CBOR Transaction metadata per label.
+        /// Get details about pinned object Get information about locally pinned IPFS object
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabelCbor</returns>
-        public TxMetadataLabelCbor MetadataTxsLabelsLabelCborGet (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2007</returns>
+        public InlineResponse2007 IpfsPinListIPFSPathGet (string iPFSPath)
         {
-             ApiResponse<TxMetadataLabelCbor> localVarResponse = MetadataTxsLabelsLabelCborGetWithHttpInfo(label, count, page, order);
+             ApiResponse<InlineResponse2007> localVarResponse = IpfsPinListIPFSPathGetWithHttpInfo(iPFSPath);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Transaction metadata content in CBOR Transaction metadata per label.
+        /// Get details about pinned object Get information about locally pinned IPFS object
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabelCbor</returns>
-        public ApiResponse< TxMetadataLabelCbor > MetadataTxsLabelsLabelCborGetWithHttpInfo (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2007</returns>
+        public ApiResponse< InlineResponse2007 > IpfsPinListIPFSPathGetWithHttpInfo (string iPFSPath)
         {
-            // verify the required parameter 'label' is set
-            if (label == null)
-                throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelCborGet");
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}/cbor";
+            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -491,10 +644,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (label != null) localVarPathParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -510,47 +660,41 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsLabelCborGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinListIPFSPathGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabelCbor>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabelCbor) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabelCbor)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
         /// <summary>
-        /// Transaction metadata content in CBOR Transaction metadata per label.
+        /// Get details about pinned object Get information about locally pinned IPFS object
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabelCbor</returns>
-        public async System.Threading.Tasks.Task<TxMetadataLabelCbor> MetadataTxsLabelsLabelCborGetAsync (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2007</returns>
+        public async System.Threading.Tasks.Task<InlineResponse2007> IpfsPinListIPFSPathGetAsync (string iPFSPath)
         {
-             ApiResponse<TxMetadataLabelCbor> localVarResponse = await MetadataTxsLabelsLabelCborGetAsyncWithHttpInfo(label, count, page, order);
+             ApiResponse<InlineResponse2007> localVarResponse = await IpfsPinListIPFSPathGetAsyncWithHttpInfo(iPFSPath);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Transaction metadata content in CBOR Transaction metadata per label.
+        /// Get details about pinned object Get information about locally pinned IPFS object
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabelCbor)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TxMetadataLabelCbor>> MetadataTxsLabelsLabelCborGetAsyncWithHttpInfo (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> IpfsPinListIPFSPathGetAsyncWithHttpInfo (string iPFSPath)
         {
-            // verify the required parameter 'label' is set
-            if (label == null)
-                throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelCborGet");
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
 
-            var localVarPath = "./metadata/txs/labels/{label}/cbor";
+            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -571,10 +715,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (label != null) localVarPathParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -590,46 +731,40 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsLabelCborGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinListIPFSPathGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabelCbor>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabelCbor) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabelCbor)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
         /// <summary>
-        /// Transaction metadata content in JSON Transaction metadata per label.
+        ///  Remove pinned objects from local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>TxMetadataLabelJson</returns>
-        public TxMetadataLabelJson MetadataTxsLabelsLabelGet (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>InlineResponse2008</returns>
+        public InlineResponse2008 IpfsPinRemoveIPFSPathPost (string iPFSPath)
         {
-             ApiResponse<TxMetadataLabelJson> localVarResponse = MetadataTxsLabelsLabelGetWithHttpInfo(label, count, page, order);
+             ApiResponse<InlineResponse2008> localVarResponse = IpfsPinRemoveIPFSPathPostWithHttpInfo(iPFSPath);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Transaction metadata content in JSON Transaction metadata per label.
+        ///  Remove pinned objects from local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of TxMetadataLabelJson</returns>
-        public ApiResponse< TxMetadataLabelJson > MetadataTxsLabelsLabelGetWithHttpInfo (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of InlineResponse2008</returns>
+        public ApiResponse< InlineResponse2008 > IpfsPinRemoveIPFSPathPostWithHttpInfo (string iPFSPath)
         {
-            // verify the required parameter 'label' is set
-            if (label == null)
-                throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelGet");
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
 
-            var localVarPath = "./metadata/txs/labels/{label}";
+            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -650,10 +785,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (label != null) localVarPathParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -662,54 +794,48 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsLabelGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinRemoveIPFSPathPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabelJson>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabelJson) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabelJson)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
         }
 
         /// <summary>
-        /// Transaction metadata content in JSON Transaction metadata per label.
+        ///  Remove pinned objects from local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of TxMetadataLabelJson</returns>
-        public async System.Threading.Tasks.Task<TxMetadataLabelJson> MetadataTxsLabelsLabelGetAsync (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of InlineResponse2008</returns>
+        public async System.Threading.Tasks.Task<InlineResponse2008> IpfsPinRemoveIPFSPathPostAsync (string iPFSPath)
         {
-             ApiResponse<TxMetadataLabelJson> localVarResponse = await MetadataTxsLabelsLabelGetAsyncWithHttpInfo(label, count, page, order);
+             ApiResponse<InlineResponse2008> localVarResponse = await IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo(iPFSPath);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Transaction metadata content in JSON Transaction metadata per label.
+        ///  Remove pinned objects from local storage
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="label">Metadata label</param>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (TxMetadataLabelJson)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TxMetadataLabelJson>> MetadataTxsLabelsLabelGetAsyncWithHttpInfo (string label, int? count = null, int? page = null, string order = null)
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo (string iPFSPath)
         {
-            // verify the required parameter 'label' is set
-            if (label == null)
-                throw new ApiException(400, "Missing required parameter 'label' when calling CardanoMetadataApi->MetadataTxsLabelsLabelGet");
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
 
-            var localVarPath = "./metadata/txs/labels/{label}";
+            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -730,10 +856,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (label != null) localVarPathParams.Add("label", this.Configuration.ApiClient.ParameterToString(label)); // path parameter
-            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -742,20 +865,20 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("MetadataTxsLabelsLabelGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsPinRemoveIPFSPathPost", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TxMetadataLabelJson>(localVarStatusCode,
+            return new ApiResponse<InlineResponse2008>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (TxMetadataLabelJson) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TxMetadataLabelJson)));
+                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
         }
 
     }

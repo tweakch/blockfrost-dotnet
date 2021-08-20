@@ -14,207 +14,239 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IIPFSPinsApi : IApiAccessor
+        public interface INutLinkApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// Pin an object
-        /// </summary>
-        /// <remarks>
-        /// Pinned objects are counted in your user storage quota.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2005</returns>
-        InlineResponse2005 IpfsPinAddIPFSPathPost (string iPFSPath);
-
-        /// <summary>
-        /// Pin an object
-        /// </summary>
-        /// <remarks>
-        /// Pinned objects are counted in your user storage quota.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2005</returns>
-        ApiResponse<InlineResponse2005> IpfsPinAddIPFSPathPostWithHttpInfo (string iPFSPath);
-        /// <summary>
-        /// List pinned objects
-        /// </summary>
-        /// <remarks>
-        /// List objects pinned to local storage
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>List&lt;InlineResponse2006&gt;</returns>
-        List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// List pinned objects
-        /// </summary>
-        /// <remarks>
-        /// List objects pinned to local storage
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
-        ApiResponse<List<InlineResponse2006>> IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Get details about pinned object
-        /// </summary>
-        /// <remarks>
-        /// Get information about locally pinned IPFS object
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2007</returns>
-        InlineResponse2007 IpfsPinListIPFSPathGet (string iPFSPath);
-
-        /// <summary>
-        /// Get details about pinned object
-        /// </summary>
-        /// <remarks>
-        /// Get information about locally pinned IPFS object
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2007</returns>
-        ApiResponse<InlineResponse2007> IpfsPinListIPFSPathGetWithHttpInfo (string iPFSPath);
-        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Remove pinned objects from local storage
+        /// List metadata about specific address
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2008</returns>
-        InlineResponse2008 IpfsPinRemoveIPFSPathPost (string iPFSPath);
+        /// <param name="address"></param>
+        /// <returns>NutlinkAddress</returns>
+        NutlinkAddress NutlinkAddressGet (string address);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Remove pinned objects from local storage
+        /// List metadata about specific address
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2008</returns>
-        ApiResponse<InlineResponse2008> IpfsPinRemoveIPFSPathPostWithHttpInfo (string iPFSPath);
+        /// <param name="address"></param>
+        /// <returns>ApiResponse of NutlinkAddress</returns>
+        ApiResponse<NutlinkAddress> NutlinkAddressGetWithHttpInfo (string address);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List tickers for a specific metadata oracle
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>NutlinkAddressTickers</returns>
+        NutlinkAddressTickers NutlinkAddressTickersGet (string address, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List tickers for a specific metadata oracle
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of NutlinkAddressTickers</returns>
+        ApiResponse<NutlinkAddressTickers> NutlinkAddressTickersGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>NutlinkAddressTicker</returns>
+        NutlinkAddressTicker NutlinkAddressTickersTickerGet (string address, string ticker, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of NutlinkAddressTicker</returns>
+        ApiResponse<NutlinkAddressTicker> NutlinkAddressTickersTickerGetWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>NutlinkTickersTicker</returns>
+        NutlinkTickersTicker NutlinkTickersTickerGet (string ticker, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of NutlinkTickersTicker</returns>
+        ApiResponse<NutlinkTickersTicker> NutlinkTickersTickerGetWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Pin an object
-        /// </summary>
-        /// <remarks>
-        /// Pinned objects are counted in your user storage quota.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2005</returns>
-        System.Threading.Tasks.Task<InlineResponse2005> IpfsPinAddIPFSPathPostAsync (string iPFSPath);
-
-        /// <summary>
-        /// Pin an object
-        /// </summary>
-        /// <remarks>
-        /// Pinned objects are counted in your user storage quota.
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> IpfsPinAddIPFSPathPostAsyncWithHttpInfo (string iPFSPath);
-        /// <summary>
-        /// List pinned objects
-        /// </summary>
-        /// <remarks>
-        /// List objects pinned to local storage
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
-        System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null);
-
-        /// <summary>
-        /// List pinned objects
-        /// </summary>
-        /// <remarks>
-        /// List objects pinned to local storage
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
-        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
-        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null);
-        /// <summary>
-        /// Get details about pinned object
-        /// </summary>
-        /// <remarks>
-        /// Get information about locally pinned IPFS object
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2007</returns>
-        System.Threading.Tasks.Task<InlineResponse2007> IpfsPinListIPFSPathGetAsync (string iPFSPath);
-
-        /// <summary>
-        /// Get details about pinned object
-        /// </summary>
-        /// <remarks>
-        /// Get information about locally pinned IPFS object
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> IpfsPinListIPFSPathGetAsyncWithHttpInfo (string iPFSPath);
-        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Remove pinned objects from local storage
+        /// List metadata about specific address
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2008</returns>
-        System.Threading.Tasks.Task<InlineResponse2008> IpfsPinRemoveIPFSPathPostAsync (string iPFSPath);
+        /// <param name="address"></param>
+        /// <returns>Task of NutlinkAddress</returns>
+        System.Threading.Tasks.Task<NutlinkAddress> NutlinkAddressGetAsync (string address);
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Remove pinned objects from local storage
+        /// List metadata about specific address
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo (string iPFSPath);
+        /// <param name="address"></param>
+        /// <returns>Task of ApiResponse (NutlinkAddress)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NutlinkAddress>> NutlinkAddressGetAsyncWithHttpInfo (string address);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List tickers for a specific metadata oracle
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of NutlinkAddressTickers</returns>
+        System.Threading.Tasks.Task<NutlinkAddressTickers> NutlinkAddressTickersGetAsync (string address, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List tickers for a specific metadata oracle
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (NutlinkAddressTickers)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTickers>> NutlinkAddressTickersGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of NutlinkAddressTicker</returns>
+        System.Threading.Tasks.Task<NutlinkAddressTicker> NutlinkAddressTickersTickerGetAsync (string address, string ticker, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (NutlinkAddressTicker)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTicker>> NutlinkAddressTickersTickerGetAsyncWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of NutlinkTickersTicker</returns>
+        System.Threading.Tasks.Task<NutlinkTickersTicker> NutlinkTickersTickerGetAsync (string ticker, int? count = null, int? page = null, string order = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// List of records of a specific ticker
+        /// </remarks>
+        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (NutlinkTickersTicker)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NutlinkTickersTicker>> NutlinkTickersTickerGetAsyncWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class IPFSPinsApi : IIPFSPinsApi
+        public partial class NutLinkApi : INutLinkApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class.
+        /// Initializes a new instance of the <see cref="NutLinkApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IPFSPinsApi(String basePath)
+        public NutLinkApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -222,10 +254,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class
+        /// Initializes a new instance of the <see cref="NutLinkApi"/> class
         /// </summary>
         /// <returns></returns>
-        public IPFSPinsApi()
+        public NutLinkApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -233,12 +265,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSPinsApi"/> class
+        /// Initializes a new instance of the <see cref="NutLinkApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IPFSPinsApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public NutLinkApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -312,30 +344,30 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Pin an object Pinned objects are counted in your user storage quota.
+        ///  List metadata about specific address
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2005</returns>
-        public InlineResponse2005 IpfsPinAddIPFSPathPost (string iPFSPath)
+        /// <param name="address"></param>
+        /// <returns>NutlinkAddress</returns>
+        public NutlinkAddress NutlinkAddressGet (string address)
         {
-             ApiResponse<InlineResponse2005> localVarResponse = IpfsPinAddIPFSPathPostWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkAddress> localVarResponse = NutlinkAddressGetWithHttpInfo(address);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Pin an object Pinned objects are counted in your user storage quota.
+        ///  List metadata about specific address
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2005</returns>
-        public ApiResponse< InlineResponse2005 > IpfsPinAddIPFSPathPostWithHttpInfo (string iPFSPath)
+        /// <param name="address"></param>
+        /// <returns>ApiResponse of NutlinkAddress</returns>
+        public ApiResponse< NutlinkAddress > NutlinkAddressGetWithHttpInfo (string address)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
 
-            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPath = "./nutlink/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -356,7 +388,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -365,48 +397,48 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinAddIPFSPathPost", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2005>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddress>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+                (NutlinkAddress) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddress)));
         }
 
         /// <summary>
-        /// Pin an object Pinned objects are counted in your user storage quota.
+        ///  List metadata about specific address
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2005</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2005> IpfsPinAddIPFSPathPostAsync (string iPFSPath)
+        /// <param name="address"></param>
+        /// <returns>Task of NutlinkAddress</returns>
+        public async System.Threading.Tasks.Task<NutlinkAddress> NutlinkAddressGetAsync (string address)
         {
-             ApiResponse<InlineResponse2005> localVarResponse = await IpfsPinAddIPFSPathPostAsyncWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkAddress> localVarResponse = await NutlinkAddressGetAsyncWithHttpInfo(address);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Pin an object Pinned objects are counted in your user storage quota.
+        ///  List metadata about specific address
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2005)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> IpfsPinAddIPFSPathPostAsyncWithHttpInfo (string iPFSPath)
+        /// <param name="address"></param>
+        /// <returns>Task of ApiResponse (NutlinkAddress)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddress>> NutlinkAddressGetAsyncWithHttpInfo (string address)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinAddIPFSPathPost");
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressGet");
 
-            var localVarPath = "./ipfs/pin/add/{IPFS_path}";
+            var localVarPath = "./nutlink/{address}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -427,7 +459,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -436,48 +468,53 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinAddIPFSPathPost", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2005>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddress>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
+                (NutlinkAddress) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddress)));
         }
 
         /// <summary>
-        /// List pinned objects List objects pinned to local storage
+        ///  List tickers for a specific metadata oracle
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>List&lt;InlineResponse2006&gt;</returns>
-        public List<InlineResponse2006> IpfsPinListGet (int? count = null, int? page = null, string order = null)
+        /// <returns>NutlinkAddressTickers</returns>
+        public NutlinkAddressTickers NutlinkAddressTickersGet (string address, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<List<InlineResponse2006>> localVarResponse = IpfsPinListGetWithHttpInfo(count, page, order);
+             ApiResponse<NutlinkAddressTickers> localVarResponse = NutlinkAddressTickersGetWithHttpInfo(address, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List pinned objects List objects pinned to local storage
+        ///  List tickers for a specific metadata oracle
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>ApiResponse of List&lt;InlineResponse2006&gt;</returns>
-        public ApiResponse< List<InlineResponse2006> > IpfsPinListGetWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>ApiResponse of NutlinkAddressTickers</returns>
+        public ApiResponse< NutlinkAddressTickers > NutlinkAddressTickersGetWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
         {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
 
-            var localVarPath = "./ipfs/pin/list/";
+            var localVarPath = "./nutlink/{address}/tickers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -498,6 +535,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -516,42 +554,47 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinListGet", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressTickersGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddressTickers>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
+                (NutlinkAddressTickers) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTickers)));
         }
 
         /// <summary>
-        /// List pinned objects List objects pinned to local storage
+        ///  List tickers for a specific metadata oracle
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of List&lt;InlineResponse2006&gt;</returns>
-        public async System.Threading.Tasks.Task<List<InlineResponse2006>> IpfsPinListGetAsync (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of NutlinkAddressTickers</returns>
+        public async System.Threading.Tasks.Task<NutlinkAddressTickers> NutlinkAddressTickersGetAsync (string address, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<List<InlineResponse2006>> localVarResponse = await IpfsPinListGetAsyncWithHttpInfo(count, page, order);
+             ApiResponse<NutlinkAddressTickers> localVarResponse = await NutlinkAddressTickersGetAsyncWithHttpInfo(address, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// List pinned objects List objects pinned to local storage
+        ///  List tickers for a specific metadata oracle
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="address"></param>
         /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
         /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
         /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
-        /// <returns>Task of ApiResponse (List&lt;InlineResponse2006&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<InlineResponse2006>>> IpfsPinListGetAsyncWithHttpInfo (int? count = null, int? page = null, string order = null)
+        /// <returns>Task of ApiResponse (NutlinkAddressTickers)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTickers>> NutlinkAddressTickersGetAsyncWithHttpInfo (string address, int? count = null, int? page = null, string order = null)
         {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersGet");
 
-            var localVarPath = "./ipfs/pin/list/";
+            var localVarPath = "./nutlink/{address}/tickers";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -572,6 +615,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
             if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
@@ -590,40 +634,51 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinListGet", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressTickersGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<InlineResponse2006>>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddressTickers>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (List<InlineResponse2006>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InlineResponse2006>)));
+                (NutlinkAddressTickers) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTickers)));
         }
 
         /// <summary>
-        /// Get details about pinned object Get information about locally pinned IPFS object
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2007</returns>
-        public InlineResponse2007 IpfsPinListIPFSPathGet (string iPFSPath)
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>NutlinkAddressTicker</returns>
+        public NutlinkAddressTicker NutlinkAddressTickersTickerGet (string address, string ticker, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = IpfsPinListIPFSPathGetWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkAddressTicker> localVarResponse = NutlinkAddressTickersTickerGetWithHttpInfo(address, ticker, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get details about pinned object Get information about locally pinned IPFS object
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2007</returns>
-        public ApiResponse< InlineResponse2007 > IpfsPinListIPFSPathGetWithHttpInfo (string iPFSPath)
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of NutlinkAddressTicker</returns>
+        public ApiResponse< NutlinkAddressTicker > NutlinkAddressTickersTickerGetWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
+            // verify the required parameter 'ticker' is set
+            if (ticker == null)
+                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
 
-            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
+            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -644,7 +699,11 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -660,41 +719,52 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinListIPFSPathGet", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressTickersTickerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2007>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddressTicker>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (NutlinkAddressTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTicker)));
         }
 
         /// <summary>
-        /// Get details about pinned object Get information about locally pinned IPFS object
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2007</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2007> IpfsPinListIPFSPathGetAsync (string iPFSPath)
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of NutlinkAddressTicker</returns>
+        public async System.Threading.Tasks.Task<NutlinkAddressTicker> NutlinkAddressTickersTickerGetAsync (string address, string ticker, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<InlineResponse2007> localVarResponse = await IpfsPinListIPFSPathGetAsyncWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkAddressTicker> localVarResponse = await NutlinkAddressTickersTickerGetAsyncWithHttpInfo(address, ticker, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get details about pinned object Get information about locally pinned IPFS object
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2007)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> IpfsPinListIPFSPathGetAsyncWithHttpInfo (string iPFSPath)
+        /// <param name="address"></param>
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (NutlinkAddressTicker)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NutlinkAddressTicker>> NutlinkAddressTickersTickerGetAsyncWithHttpInfo (string address, string ticker, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinListIPFSPathGet");
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new ApiException(400, "Missing required parameter 'address' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
+            // verify the required parameter 'ticker' is set
+            if (ticker == null)
+                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkAddressTickersTickerGet");
 
-            var localVarPath = "./ipfs/pin/list/{IPFS_path}";
+            var localVarPath = "./nutlink/{address}/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -715,7 +785,11 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (address != null) localVarPathParams.Add("address", this.Configuration.ApiClient.ParameterToString(address)); // path parameter
+            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -731,40 +805,46 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinListIPFSPathGet", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkAddressTickersTickerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2007>(localVarStatusCode,
+            return new ApiResponse<NutlinkAddressTicker>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (NutlinkAddressTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkAddressTicker)));
         }
 
         /// <summary>
-        ///  Remove pinned objects from local storage
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>InlineResponse2008</returns>
-        public InlineResponse2008 IpfsPinRemoveIPFSPathPost (string iPFSPath)
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>NutlinkTickersTicker</returns>
+        public NutlinkTickersTicker NutlinkTickersTickerGet (string ticker, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = IpfsPinRemoveIPFSPathPostWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkTickersTicker> localVarResponse = NutlinkTickersTickerGetWithHttpInfo(ticker, count, page, order);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Remove pinned objects from local storage
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>ApiResponse of InlineResponse2008</returns>
-        public ApiResponse< InlineResponse2008 > IpfsPinRemoveIPFSPathPostWithHttpInfo (string iPFSPath)
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>ApiResponse of NutlinkTickersTicker</returns>
+        public ApiResponse< NutlinkTickersTicker > NutlinkTickersTickerGetWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
+            // verify the required parameter 'ticker' is set
+            if (ticker == null)
+                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
 
-            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
+            var localVarPath = "./nutlink/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -785,7 +865,10 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -794,48 +877,54 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinRemoveIPFSPathPost", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkTickersTickerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2008>(localVarStatusCode,
+            return new ApiResponse<NutlinkTickersTicker>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (NutlinkTickersTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkTickersTicker)));
         }
 
         /// <summary>
-        ///  Remove pinned objects from local storage
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of InlineResponse2008</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2008> IpfsPinRemoveIPFSPathPostAsync (string iPFSPath)
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of NutlinkTickersTicker</returns>
+        public async System.Threading.Tasks.Task<NutlinkTickersTicker> NutlinkTickersTickerGetAsync (string ticker, int? count = null, int? page = null, string order = null)
         {
-             ApiResponse<InlineResponse2008> localVarResponse = await IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo(iPFSPath);
+             ApiResponse<NutlinkTickersTicker> localVarResponse = await NutlinkTickersTickerGetAsyncWithHttpInfo(ticker, count, page, order);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        ///  Remove pinned objects from local storage
+        ///  List of records of a specific ticker
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="iPFSPath"></param>
-        /// <returns>Task of ApiResponse (InlineResponse2008)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> IpfsPinRemoveIPFSPathPostAsyncWithHttpInfo (string iPFSPath)
+        /// <param name="ticker"></param>
+        /// <param name="count">The number of results displayed on one page. (optional, default to 100)</param>
+        /// <param name="page">The page number for listing the results. (optional, default to 1)</param>
+        /// <param name="order">The ordering of items from the point of view of the blockchain, not the page listing itself. By default, we return oldest first, newest last.  (optional, default to asc)</param>
+        /// <returns>Task of ApiResponse (NutlinkTickersTicker)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NutlinkTickersTicker>> NutlinkTickersTickerGetAsyncWithHttpInfo (string ticker, int? count = null, int? page = null, string order = null)
         {
-            // verify the required parameter 'iPFSPath' is set
-            if (iPFSPath == null)
-                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSPinsApi->IpfsPinRemoveIPFSPathPost");
+            // verify the required parameter 'ticker' is set
+            if (ticker == null)
+                throw new ApiException(400, "Missing required parameter 'ticker' when calling NutLinkApi->NutlinkTickersTickerGet");
 
-            var localVarPath = "./ipfs/pin/remove/{IPFS_path}";
+            var localVarPath = "./nutlink/tickers/{ticker}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -856,7 +945,10 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
+            if (ticker != null) localVarPathParams.Add("ticker", this.Configuration.ApiClient.ParameterToString(ticker)); // path parameter
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (order != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "order", order)); // query parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -865,20 +957,20 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsPinRemoveIPFSPathPost", localVarResponse);
+                Exception exception = ExceptionFactory("NutlinkTickersTickerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2008>(localVarStatusCode,
+            return new ApiResponse<NutlinkTickersTicker>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
+                (NutlinkTickersTicker) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NutlinkTickersTicker)));
         }
 
     }

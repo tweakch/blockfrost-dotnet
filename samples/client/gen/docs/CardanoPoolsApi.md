@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.CardanoPoolsApi
+# Blockfrost.Api.Gen.Services.CardanoPoolsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -27,7 +27,7 @@ List of registered stake pools.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -96,7 +96,7 @@ List of stake pools blocks.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -167,7 +167,7 @@ List of current stake pools delegators.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -238,7 +238,7 @@ Pool information.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -303,7 +303,7 @@ History of stake pool parameters over epochs.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -374,7 +374,7 @@ Stake pool registration metadata.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -439,7 +439,7 @@ Relays of a stake pool.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -504,7 +504,7 @@ List of certificate updates to the stake pool.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -575,7 +575,7 @@ List of already retired pools.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -644,7 +644,7 @@ List of stake pools retiring in the upcoming epochs
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

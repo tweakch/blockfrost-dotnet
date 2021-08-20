@@ -13,7 +13,7 @@ namespace {{packageName}}.{{apiPackage}}
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    {{>visibility}} interface {{interfacePrefix}}{{classname}} : IApiAccessor
+    {{>visibility}} interface {{interfacePrefix}}{{classname}}Service : IBlockfrostService
     {
         #region Synchronous Operations
         {{#operation}}

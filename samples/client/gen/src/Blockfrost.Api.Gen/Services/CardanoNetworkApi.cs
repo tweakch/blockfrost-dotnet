@@ -14,69 +14,69 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IIPFSAddApi : IApiAccessor
+        public interface ICardanoNetworkApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// Add a file to IPFS
+        /// Network information
         /// </summary>
         /// <remarks>
-        /// You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Return detailed network information.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2004</returns>
-        InlineResponse2004 IpfsAddPost ();
+        /// <returns>Network</returns>
+        Network NetworkGet ();
 
         /// <summary>
-        /// Add a file to IPFS
+        /// Network information
         /// </summary>
         /// <remarks>
-        /// You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Return detailed network information.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2004</returns>
-        ApiResponse<InlineResponse2004> IpfsAddPostWithHttpInfo ();
+        /// <returns>ApiResponse of Network</returns>
+        ApiResponse<Network> NetworkGetWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Add a file to IPFS
+        /// Network information
         /// </summary>
         /// <remarks>
-        /// You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Return detailed network information.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2004</returns>
-        System.Threading.Tasks.Task<InlineResponse2004> IpfsAddPostAsync ();
+        /// <returns>Task of Network</returns>
+        System.Threading.Tasks.Task<Network> NetworkGetAsync ();
 
         /// <summary>
-        /// Add a file to IPFS
+        /// Network information
         /// </summary>
         /// <remarks>
-        /// You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Return detailed network information.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> IpfsAddPostAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (Network)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Network>> NetworkGetAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class IPFSAddApi : IIPFSAddApi
+        public partial class CardanoNetworkApi : ICardanoNetworkApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSAddApi"/> class.
+        /// Initializes a new instance of the <see cref="CardanoNetworkApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public IPFSAddApi(String basePath)
+        public CardanoNetworkApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -84,10 +84,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSAddApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoNetworkApi"/> class
         /// </summary>
         /// <returns></returns>
-        public IPFSAddApi()
+        public CardanoNetworkApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -95,12 +95,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFSAddApi"/> class
+        /// Initializes a new instance of the <see cref="CardanoNetworkApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public IPFSAddApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public CardanoNetworkApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -174,25 +174,25 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Add a file to IPFS You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Network information Return detailed network information.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2004</returns>
-        public InlineResponse2004 IpfsAddPost ()
+        /// <returns>Network</returns>
+        public Network NetworkGet ()
         {
-             ApiResponse<InlineResponse2004> localVarResponse = IpfsAddPostWithHttpInfo();
+             ApiResponse<Network> localVarResponse = NetworkGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add a file to IPFS You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Network information Return detailed network information.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2004</returns>
-        public ApiResponse< InlineResponse2004 > IpfsAddPostWithHttpInfo ()
+        /// <returns>ApiResponse of Network</returns>
+        public ApiResponse< Network > NetworkGetWithHttpInfo ()
         {
 
-            var localVarPath = "./ipfs/add";
+            var localVarPath = "./network";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -221,43 +221,43 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsAddPost", localVarResponse);
+                Exception exception = ExceptionFactory("NetworkGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2004>(localVarStatusCode,
+            return new ApiResponse<Network>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (Network) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Network)));
         }
 
         /// <summary>
-        /// Add a file to IPFS You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Network information Return detailed network information.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2004</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2004> IpfsAddPostAsync ()
+        /// <returns>Task of Network</returns>
+        public async System.Threading.Tasks.Task<Network> NetworkGetAsync ()
         {
-             ApiResponse<InlineResponse2004> localVarResponse = await IpfsAddPostAsyncWithHttpInfo();
+             ApiResponse<Network> localVarResponse = await NetworkGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Add a file to IPFS You need to &#x60;/ipfs/pin/add&#x60; an object to avoid it being garbage collected. This usage is being counted in your user account quota. 
+        /// Network information Return detailed network information.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> IpfsAddPostAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (Network)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Network>> NetworkGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./ipfs/add";
+            var localVarPath = "./network";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -286,20 +286,20 @@ namespace Blockfrost.Api.Gen.Api
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("IpfsAddPost", localVarResponse);
+                Exception exception = ExceptionFactory("NetworkGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2004>(localVarStatusCode,
+            return new ApiResponse<Network>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (Network) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Network)));
         }
 
     }

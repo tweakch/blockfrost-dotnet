@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.CardanoAssetsApi
+# Blockfrost.Api.Gen.Services.CardanoAssetsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -24,7 +24,7 @@ List of a addresses containing a specific asset
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -95,7 +95,7 @@ Information about a specific asset
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -160,7 +160,7 @@ History of a specific asset
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -231,7 +231,7 @@ List of a specific asset transactions
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -302,7 +302,7 @@ List of a specific asset transactions
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -373,7 +373,7 @@ List of assets.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -442,7 +442,7 @@ List of asset minted under a specific policy
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

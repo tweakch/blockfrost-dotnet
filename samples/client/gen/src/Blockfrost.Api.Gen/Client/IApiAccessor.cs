@@ -18,7 +18,7 @@ namespace Blockfrost.Api.Gen.Client
     /// <summary>
     /// Represents configuration aspects required to interact with the API endpoints.
     /// </summary>
-        public interface IApiAccessor
+        public interface IBlockfrostService
     {
         /// <summary>
         /// Gets or sets the configuration object

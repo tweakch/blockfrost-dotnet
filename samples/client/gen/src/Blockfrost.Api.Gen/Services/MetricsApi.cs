@@ -14,145 +14,107 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface IHealthApi : IApiAccessor
+        public interface IMetricsApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// Current backend time
+        /// Blockfrost endpoint usage metrics
         /// </summary>
         /// <remarks>
-        /// This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 HealthClockGet ();
+        /// <returns>MetricsEndpoints</returns>
+        MetricsEndpoints MetricsEndpointsGet ();
 
         /// <summary>
-        /// Current backend time
+        /// Blockfrost endpoint usage metrics
         /// </summary>
         /// <remarks>
-        /// This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2002</returns>
-        ApiResponse<InlineResponse2002> HealthClockGetWithHttpInfo ();
+        /// <returns>ApiResponse of MetricsEndpoints</returns>
+        ApiResponse<MetricsEndpoints> MetricsEndpointsGetWithHttpInfo ();
         /// <summary>
-        /// Backend health status
+        /// Blockfrost usage metrics
         /// </summary>
         /// <remarks>
-        /// Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// History of your Blockfrost usage metrics in the past 30 days.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 HealthGet ();
+        /// <returns>Metrics</returns>
+        Metrics MetricsGet ();
 
         /// <summary>
-        /// Backend health status
+        /// Blockfrost usage metrics
         /// </summary>
         /// <remarks>
-        /// Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// History of your Blockfrost usage metrics in the past 30 days.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2001</returns>
-        ApiResponse<InlineResponse2001> HealthGetWithHttpInfo ();
-        /// <summary>
-        /// Root endpoint
-        /// </summary>
-        /// <remarks>
-        /// Root endpoint has no other function than to point end users to documentation. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse200</returns>
-        InlineResponse200 RootGet ();
-
-        /// <summary>
-        /// Root endpoint
-        /// </summary>
-        /// <remarks>
-        /// Root endpoint has no other function than to point end users to documentation. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse200</returns>
-        ApiResponse<InlineResponse200> RootGetWithHttpInfo ();
+        /// <returns>ApiResponse of Metrics</returns>
+        ApiResponse<Metrics> MetricsGetWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Current backend time
+        /// Blockfrost endpoint usage metrics
         /// </summary>
         /// <remarks>
-        /// This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2002</returns>
-        System.Threading.Tasks.Task<InlineResponse2002> HealthClockGetAsync ();
+        /// <returns>Task of MetricsEndpoints</returns>
+        System.Threading.Tasks.Task<MetricsEndpoints> MetricsEndpointsGetAsync ();
 
         /// <summary>
-        /// Current backend time
+        /// Blockfrost endpoint usage metrics
         /// </summary>
         /// <remarks>
-        /// This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2002)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> HealthClockGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (MetricsEndpoints)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MetricsEndpoints>> MetricsEndpointsGetAsyncWithHttpInfo ();
         /// <summary>
-        /// Backend health status
+        /// Blockfrost usage metrics
         /// </summary>
         /// <remarks>
-        /// Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// History of your Blockfrost usage metrics in the past 30 days.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2001</returns>
-        System.Threading.Tasks.Task<InlineResponse2001> HealthGetAsync ();
+        /// <returns>Task of Metrics</returns>
+        System.Threading.Tasks.Task<Metrics> MetricsGetAsync ();
 
         /// <summary>
-        /// Backend health status
+        /// Blockfrost usage metrics
         /// </summary>
         /// <remarks>
-        /// Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// History of your Blockfrost usage metrics in the past 30 days.
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> HealthGetAsyncWithHttpInfo ();
-        /// <summary>
-        /// Root endpoint
-        /// </summary>
-        /// <remarks>
-        /// Root endpoint has no other function than to point end users to documentation. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse200</returns>
-        System.Threading.Tasks.Task<InlineResponse200> RootGetAsync ();
-
-        /// <summary>
-        /// Root endpoint
-        /// </summary>
-        /// <remarks>
-        /// Root endpoint has no other function than to point end users to documentation. 
-        /// </remarks>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> RootGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (Metrics)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Metrics>> MetricsGetAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class HealthApi : IHealthApi
+        public partial class MetricsApi : IMetricsApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthApi"/> class.
+        /// Initializes a new instance of the <see cref="MetricsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public HealthApi(String basePath)
+        public MetricsApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -160,10 +122,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthApi"/> class
+        /// Initializes a new instance of the <see cref="MetricsApi"/> class
         /// </summary>
         /// <returns></returns>
-        public HealthApi()
+        public MetricsApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -171,12 +133,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthApi"/> class
+        /// Initializes a new instance of the <see cref="MetricsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public HealthApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public MetricsApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -250,25 +212,25 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Current backend time This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// Blockfrost endpoint usage metrics History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2002</returns>
-        public InlineResponse2002 HealthClockGet ()
+        /// <returns>MetricsEndpoints</returns>
+        public MetricsEndpoints MetricsEndpointsGet ()
         {
-             ApiResponse<InlineResponse2002> localVarResponse = HealthClockGetWithHttpInfo();
+             ApiResponse<MetricsEndpoints> localVarResponse = MetricsEndpointsGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Current backend time This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// Blockfrost endpoint usage metrics History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2002</returns>
-        public ApiResponse< InlineResponse2002 > HealthClockGetWithHttpInfo ()
+        /// <returns>ApiResponse of MetricsEndpoints</returns>
+        public ApiResponse< MetricsEndpoints > MetricsEndpointsGetWithHttpInfo ()
         {
 
-            var localVarPath = "./health/clock";
+            var localVarPath = "./metrics/endpoints";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -304,36 +266,36 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("HealthClockGet", localVarResponse);
+                Exception exception = ExceptionFactory("MetricsEndpointsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2002>(localVarStatusCode,
+            return new ApiResponse<MetricsEndpoints>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
+                (MetricsEndpoints) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetricsEndpoints)));
         }
 
         /// <summary>
-        /// Current backend time This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// Blockfrost endpoint usage metrics History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2002</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2002> HealthClockGetAsync ()
+        /// <returns>Task of MetricsEndpoints</returns>
+        public async System.Threading.Tasks.Task<MetricsEndpoints> MetricsEndpointsGetAsync ()
         {
-             ApiResponse<InlineResponse2002> localVarResponse = await HealthClockGetAsyncWithHttpInfo();
+             ApiResponse<MetricsEndpoints> localVarResponse = await MetricsEndpointsGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Current backend time This endpoint provides the current UNIX time. Your application might use this to verify if the client clock is not out of sync. 
+        /// Blockfrost endpoint usage metrics History of your Blockfrost usage metrics per endpoint in the past 30 days. 
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2002)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> HealthClockGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (MetricsEndpoints)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MetricsEndpoints>> MetricsEndpointsGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./health/clock";
+            var localVarPath = "./metrics/endpoints";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -369,35 +331,35 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("HealthClockGet", localVarResponse);
+                Exception exception = ExceptionFactory("MetricsEndpointsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2002>(localVarStatusCode,
+            return new ApiResponse<MetricsEndpoints>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
+                (MetricsEndpoints) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MetricsEndpoints)));
         }
 
         /// <summary>
-        /// Backend health status Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// Blockfrost usage metrics History of your Blockfrost usage metrics in the past 30 days.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse2001</returns>
-        public InlineResponse2001 HealthGet ()
+        /// <returns>Metrics</returns>
+        public Metrics MetricsGet ()
         {
-             ApiResponse<InlineResponse2001> localVarResponse = HealthGetWithHttpInfo();
+             ApiResponse<Metrics> localVarResponse = MetricsGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Backend health status Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// Blockfrost usage metrics History of your Blockfrost usage metrics in the past 30 days.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse2001</returns>
-        public ApiResponse< InlineResponse2001 > HealthGetWithHttpInfo ()
+        /// <returns>ApiResponse of Metrics</returns>
+        public ApiResponse< Metrics > MetricsGetWithHttpInfo ()
         {
 
-            var localVarPath = "./health";
+            var localVarPath = "./metrics/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -433,36 +395,36 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("HealthGet", localVarResponse);
+                Exception exception = ExceptionFactory("MetricsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2001>(localVarStatusCode,
+            return new ApiResponse<Metrics>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
+                (Metrics) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metrics)));
         }
 
         /// <summary>
-        /// Backend health status Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// Blockfrost usage metrics History of your Blockfrost usage metrics in the past 30 days.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse2001</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2001> HealthGetAsync ()
+        /// <returns>Task of Metrics</returns>
+        public async System.Threading.Tasks.Task<Metrics> MetricsGetAsync ()
         {
-             ApiResponse<InlineResponse2001> localVarResponse = await HealthGetAsyncWithHttpInfo();
+             ApiResponse<Metrics> localVarResponse = await MetricsGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Backend health status Return backend status as a boolean. Your application     should handle situations when backend for the given chain is unavailable. 
+        /// Blockfrost usage metrics History of your Blockfrost usage metrics in the past 30 days.
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse2001)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> HealthGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (Metrics)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Metrics>> MetricsGetAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "./health";
+            var localVarPath = "./metrics/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -498,142 +460,13 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("HealthGet", localVarResponse);
+                Exception exception = ExceptionFactory("MetricsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse2001>(localVarStatusCode,
+            return new ApiResponse<Metrics>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
-        }
-
-        /// <summary>
-        /// Root endpoint Root endpoint has no other function than to point end users to documentation. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse200</returns>
-        public InlineResponse200 RootGet ()
-        {
-             ApiResponse<InlineResponse200> localVarResponse = RootGetWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Root endpoint Root endpoint has no other function than to point end users to documentation. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse200</returns>
-        public ApiResponse< InlineResponse200 > RootGetWithHttpInfo ()
-        {
-
-            var localVarPath = "./";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("RootGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse200>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
-        }
-
-        /// <summary>
-        /// Root endpoint Root endpoint has no other function than to point end users to documentation. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse200</returns>
-        public async System.Threading.Tasks.Task<InlineResponse200> RootGetAsync ()
-        {
-             ApiResponse<InlineResponse200> localVarResponse = await RootGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Root endpoint Root endpoint has no other function than to point end users to documentation. 
-        /// </summary>
-        /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> RootGetAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "./";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (ApiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
-            {
-                localVarHeaderParams["project_id"] = this.Configuration.GetApiKeyWithPrefix("project_id");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("RootGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse200>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+                (Metrics) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metrics)));
         }
 
     }

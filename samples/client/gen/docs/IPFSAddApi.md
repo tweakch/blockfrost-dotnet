@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.IPFSAddApi
+# Blockfrost.Api.Gen.Services.IPFSAddApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -18,7 +18,7 @@ You need to `/ipfs/pin/add` an object to avoid it being garbage collected. This 
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

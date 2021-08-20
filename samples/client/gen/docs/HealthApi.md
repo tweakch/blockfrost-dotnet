@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.HealthApi
+# Blockfrost.Api.Gen.Services.HealthApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -20,7 +20,7 @@ This endpoint provides the current UNIX time. Your application might use this to
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -81,7 +81,7 @@ Return backend status as a boolean. Your application     should handle situation
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -142,7 +142,7 @@ Root endpoint has no other function than to point end users to documentation.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.CardanoNetworkApi
+# Blockfrost.Api.Gen.Services.CardanoNetworkApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -18,7 +18,7 @@ Return detailed network information.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 

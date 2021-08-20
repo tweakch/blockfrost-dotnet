@@ -14,12 +14,12 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ICardanoEpochsApi : IApiAccessor
+        public interface ICardanoEpochsApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>

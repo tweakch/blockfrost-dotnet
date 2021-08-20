@@ -14,7 +14,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Model;
 using Blockfrost.Api.Gen.Client;
 using System.Reflection;

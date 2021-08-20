@@ -14,69 +14,73 @@ using System.Linq;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
-namespace Blockfrost.Api.Gen.Api
+namespace Blockfrost.Api.Gen.Services
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ICardanoLedgerApi : IApiAccessor
+        public interface IIPFSGatewayApi : IBlockfrostService
     {
         #region Synchronous Operations
         /// <summary>
-        /// Blockchain genesis
+        /// Relay to an IPFS gateway
         /// </summary>
         /// <remarks>
-        /// Return the information about blockchain genesis.
+        /// Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>GenesisContent</returns>
-        GenesisContent GenesisGet ();
+        /// <param name="iPFSPath"></param>
+        /// <returns></returns>
+        void IpfsGatewayIPFSPathGet (string iPFSPath);
 
         /// <summary>
-        /// Blockchain genesis
+        /// Relay to an IPFS gateway
         /// </summary>
         /// <remarks>
-        /// Return the information about blockchain genesis.
+        /// Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of GenesisContent</returns>
-        ApiResponse<GenesisContent> GenesisGetWithHttpInfo ();
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> IpfsGatewayIPFSPathGetWithHttpInfo (string iPFSPath);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Blockchain genesis
+        /// Relay to an IPFS gateway
         /// </summary>
         /// <remarks>
-        /// Return the information about blockchain genesis.
+        /// Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of GenesisContent</returns>
-        System.Threading.Tasks.Task<GenesisContent> GenesisGetAsync ();
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task IpfsGatewayIPFSPathGetAsync (string iPFSPath);
 
         /// <summary>
-        /// Blockchain genesis
+        /// Relay to an IPFS gateway
         /// </summary>
         /// <remarks>
-        /// Return the information about blockchain genesis.
+        /// Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </remarks>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (GenesisContent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenesisContent>> GenesisGetAsyncWithHttpInfo ();
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> IpfsGatewayIPFSPathGetAsyncWithHttpInfo (string iPFSPath);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class CardanoLedgerApi : ICardanoLedgerApi
+        public partial class IPFSGatewayApi : IIPFSGatewayApi
     {
         private Blockfrost.Api.Gen.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoLedgerApi"/> class.
+        /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public CardanoLedgerApi(String basePath)
+        public IPFSGatewayApi(String basePath)
         {
             this.Configuration = new Blockfrost.Api.Gen.Client.Configuration { BasePath = basePath };
 
@@ -84,10 +88,10 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoLedgerApi"/> class
+        /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class
         /// </summary>
         /// <returns></returns>
-        public CardanoLedgerApi()
+        public IPFSGatewayApi()
         {
             this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
 
@@ -95,12 +99,12 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardanoLedgerApi"/> class
+        /// Initializes a new instance of the <see cref="IPFSGatewayApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public CardanoLedgerApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
+        public IPFSGatewayApi(Blockfrost.Api.Gen.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Blockfrost.Api.Gen.Client.Configuration.Default;
@@ -174,25 +178,29 @@ namespace Blockfrost.Api.Gen.Api
         }
 
         /// <summary>
-        /// Blockchain genesis Return the information about blockchain genesis.
+        /// Relay to an IPFS gateway Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>GenesisContent</returns>
-        public GenesisContent GenesisGet ()
+        /// <param name="iPFSPath"></param>
+        /// <returns></returns>
+        public void IpfsGatewayIPFSPathGet (string iPFSPath)
         {
-             ApiResponse<GenesisContent> localVarResponse = GenesisGetWithHttpInfo();
-             return localVarResponse.Data;
+             IpfsGatewayIPFSPathGetWithHttpInfo(iPFSPath);
         }
 
         /// <summary>
-        /// Blockchain genesis Return the information about blockchain genesis.
+        /// Relay to an IPFS gateway Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of GenesisContent</returns>
-        public ApiResponse< GenesisContent > GenesisGetWithHttpInfo ()
+        /// <param name="iPFSPath"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> IpfsGatewayIPFSPathGetWithHttpInfo (string iPFSPath)
         {
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSGatewayApi->IpfsGatewayIPFSPathGet");
 
-            var localVarPath = "./genesis";
+            var localVarPath = "./ipfs/gateway/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -213,6 +221,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -228,36 +237,40 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GenesisGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsGatewayIPFSPathGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GenesisContent>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (GenesisContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GenesisContent)));
+                null);
         }
 
         /// <summary>
-        /// Blockchain genesis Return the information about blockchain genesis.
+        /// Relay to an IPFS gateway Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of GenesisContent</returns>
-        public async System.Threading.Tasks.Task<GenesisContent> GenesisGetAsync ()
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task IpfsGatewayIPFSPathGetAsync (string iPFSPath)
         {
-             ApiResponse<GenesisContent> localVarResponse = await GenesisGetAsyncWithHttpInfo();
-             return localVarResponse.Data;
+             await IpfsGatewayIPFSPathGetAsyncWithHttpInfo(iPFSPath);
 
         }
 
         /// <summary>
-        /// Blockchain genesis Return the information about blockchain genesis.
+        /// Relay to an IPFS gateway Retrieve an object from the IFPS gateway (useful if you do not want to rely on a public gateway, such as &#x60;ipfs.blockfrost.dev&#x60;).
         /// </summary>
         /// <exception cref="Blockfrost.Api.Gen.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (GenesisContent)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GenesisContent>> GenesisGetAsyncWithHttpInfo ()
+        /// <param name="iPFSPath"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> IpfsGatewayIPFSPathGetAsyncWithHttpInfo (string iPFSPath)
         {
+            // verify the required parameter 'iPFSPath' is set
+            if (iPFSPath == null)
+                throw new ApiException(400, "Missing required parameter 'iPFSPath' when calling IPFSGatewayApi->IpfsGatewayIPFSPathGet");
 
-            var localVarPath = "./genesis";
+            var localVarPath = "./ipfs/gateway/{IPFS_path}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -278,6 +291,7 @@ namespace Blockfrost.Api.Gen.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (iPFSPath != null) localVarPathParams.Add("IPFS_path", this.Configuration.ApiClient.ParameterToString(iPFSPath)); // path parameter
             // authentication (ApiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("project_id")))
             {
@@ -293,13 +307,13 @@ namespace Blockfrost.Api.Gen.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GenesisGet", localVarResponse);
+                Exception exception = ExceptionFactory("IpfsGatewayIPFSPathGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GenesisContent>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => string.Join(",", x.Value)),
-                (GenesisContent) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GenesisContent)));
+                null);
         }
 
     }

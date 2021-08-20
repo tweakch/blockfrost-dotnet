@@ -16,7 +16,7 @@ using System.Reflection;
 // using NUnit.Framework;
 
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Model;
 
 namespace Blockfrost.Api.Gen.Test

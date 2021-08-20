@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Api.MetricsApi
+# Blockfrost.Api.Gen.Services.MetricsApi
 
 All URIs are relative to *https://cardano-mainnet.blockfrost.io/api/v0/*
 
@@ -19,7 +19,7 @@ History of your Blockfrost usage metrics per endpoint in the past 30 days.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
@@ -80,7 +80,7 @@ History of your Blockfrost usage metrics in the past 30 days.
 ```csharp
 using System;
 using System.Diagnostics;
-using Blockfrost.Api.Gen.Api;
+using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
 using Blockfrost.Api.Gen.Model;
 
