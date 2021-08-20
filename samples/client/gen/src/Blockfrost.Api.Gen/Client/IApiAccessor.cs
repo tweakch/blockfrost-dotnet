@@ -97,7 +97,7 @@ namespace Blockfrost.Api.Gen.Client
         }
         
         // TODO Deprecate
-        public ABlockfrostService(String basePath) : this(new HttpClient() {BaseAddress = new Uri(basePath)})
+        public ABlockfrostService(String basePath) : this(new System.Net.Http.HttpClient() {BaseAddress = new Uri(basePath)})
         {
         }
 
@@ -115,6 +115,11 @@ namespace Blockfrost.Api.Gen.Client
                 this.Configuration = configuration;
 
             ExceptionFactory = Blockfrost.Api.Gen.Client.Configuration.DefaultExceptionFactory;
+        }
+
+
+        public virtual void UpdateJsonSerializerOptions(System.Text.Json.JsonSerializerOptions options)
+        {
         }
 
         private System.Text.Json.JsonSerializerOptions CreateSerializerOptions()
