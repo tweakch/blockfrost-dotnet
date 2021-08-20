@@ -23,7 +23,7 @@ using System;
 using System.Diagnostics;
 using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Model;
+using Blockfrost.Api.Gen.Models;
 
 namespace Example
 {
@@ -87,7 +87,7 @@ using System;
 using System.Diagnostics;
 using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Model;
+using Blockfrost.Api.Gen.Models;
 
 namespace Example
 {
@@ -157,7 +157,7 @@ using System;
 using System.Diagnostics;
 using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Model;
+using Blockfrost.Api.Gen.Models;
 
 namespace Example
 {
@@ -229,7 +229,7 @@ using System;
 using System.Diagnostics;
 using Blockfrost.Api.Gen.Services;
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Model;
+using Blockfrost.Api.Gen.Models;
 
 namespace Example
 {

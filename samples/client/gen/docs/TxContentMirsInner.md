@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.TxContentMirsInner
+# Blockfrost.Api.Gen.Models.TxContentMirsInner
 ## Properties
 
 Name | Type | Description | Notes

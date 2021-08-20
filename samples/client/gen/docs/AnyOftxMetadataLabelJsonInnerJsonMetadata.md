@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.AnyOftxMetadataLabelJsonInnerJsonMetadata
+# Blockfrost.Api.Gen.Models.AnyOftxMetadataLabelJsonInnerJsonMetadata
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.AssetMetadata
+# Blockfrost.Api.Gen.Models.AssetMetadata
 ## Properties
 
 Name | Type | Description | Notes

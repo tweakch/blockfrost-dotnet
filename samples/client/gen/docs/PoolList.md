@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.PoolList
+# Blockfrost.Api.Gen.Models.PoolList
 ## Properties
 
 Name | Type | Description | Notes

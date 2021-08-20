@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.TxContentPoolCertsInner
+# Blockfrost.Api.Gen.Models.TxContentPoolCertsInner
 ## Properties
 
 Name | Type | Description | Notes

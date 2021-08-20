@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.MetricsEndpoints
+# Blockfrost.Api.Gen.Models.MetricsEndpoints
 ## Properties
 
 Name | Type | Description | Notes

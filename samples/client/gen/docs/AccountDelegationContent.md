@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.AccountDelegationContent
+# Blockfrost.Api.Gen.Models.AccountDelegationContent
 ## Properties
 
 Name | Type | Description | Notes

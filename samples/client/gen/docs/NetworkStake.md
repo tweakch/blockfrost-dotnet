@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.NetworkStake
+# Blockfrost.Api.Gen.Models.NetworkStake
 ## Properties
 
 Name | Type | Description | Notes

@@ -14,7 +14,7 @@ using System.Linq;
 
 using System.Net.Http;
 using Blockfrost.Api.Gen.Client;
-using Blockfrost.Api.Gen.Model;
+using Blockfrost.Api.Gen.Models;
 
 namespace Blockfrost.Api.Gen.Services
 {

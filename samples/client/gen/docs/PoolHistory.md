@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.PoolHistory
+# Blockfrost.Api.Gen.Models.PoolHistory
 ## Properties
 
 Name | Type | Description | Notes

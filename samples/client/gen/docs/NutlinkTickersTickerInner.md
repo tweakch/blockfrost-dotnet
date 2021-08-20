@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.NutlinkTickersTickerInner
+# Blockfrost.Api.Gen.Models.NutlinkTickersTickerInner
 ## Properties
 
 Name | Type | Description | Notes

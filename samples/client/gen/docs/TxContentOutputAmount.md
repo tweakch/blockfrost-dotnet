@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.TxContentOutputAmount
+# Blockfrost.Api.Gen.Models.TxContentOutputAmount
 ## Properties
 
 Name | Type | Description | Notes

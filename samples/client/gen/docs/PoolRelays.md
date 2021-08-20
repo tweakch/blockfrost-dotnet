@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.PoolRelays
+# Blockfrost.Api.Gen.Models.PoolRelays
 ## Properties
 
 Name | Type | Description | Notes

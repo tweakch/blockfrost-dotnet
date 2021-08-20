@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.PoolListRetire
+# Blockfrost.Api.Gen.Models.PoolListRetire
 ## Properties
 
 Name | Type | Description | Notes

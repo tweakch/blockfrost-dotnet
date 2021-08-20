@@ -14,6 +14,7 @@ java -jar swagger-codegen-cli.jar generate \
     -t templates \
     --additional-properties packageName=Blockfrost.Api.Gen \
                             apiPackage=Services \
+                            modelPackage=Models \
                             packageGuid=0033076C-68A7-4EEB-9C66-74A266DCB6E0 \
                             targetFramework=v5.0 \
 

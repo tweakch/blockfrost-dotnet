@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.EmptyObject
+# Blockfrost.Api.Gen.Models.EmptyObject
 ## Properties
 
 Name | Type | Description | Notes

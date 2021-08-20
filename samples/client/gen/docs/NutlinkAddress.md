@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.NutlinkAddress
+# Blockfrost.Api.Gen.Models.NutlinkAddress
 ## Properties
 
 Name | Type | Description | Notes

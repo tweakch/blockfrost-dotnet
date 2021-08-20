@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.NutlinkAddressTickers
+# Blockfrost.Api.Gen.Models.NutlinkAddressTickers
 ## Properties
 
 Name | Type | Description | Notes

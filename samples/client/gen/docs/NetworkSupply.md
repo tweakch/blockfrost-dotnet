@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.NetworkSupply
+# Blockfrost.Api.Gen.Models.NetworkSupply
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.AddressTransactionsContent
+# Blockfrost.Api.Gen.Models.AddressTransactionsContent
 ## Properties
 
 Name | Type | Description | Notes

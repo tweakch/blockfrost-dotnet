@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.TxContentPoolRetires
+# Blockfrost.Api.Gen.Models.TxContentPoolRetires
 ## Properties
 
 Name | Type | Description | Notes

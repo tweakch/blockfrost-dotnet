@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.AddressUtxoContent
+# Blockfrost.Api.Gen.Models.AddressUtxoContent
 ## Properties
 
 Name | Type | Description | Notes

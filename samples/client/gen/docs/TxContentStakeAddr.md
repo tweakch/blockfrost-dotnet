@@ -1,4 +1,4 @@
-# Blockfrost.Api.Gen.Model.TxContentStakeAddr
+# Blockfrost.Api.Gen.Models.TxContentStakeAddr
 ## Properties
 
 Name | Type | Description | Notes
