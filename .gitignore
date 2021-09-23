@@ -456,6 +456,7 @@ $RECYCLE.BIN/
 ## 
 ## devs
 ##
+launchSettings.json
 blockfrost-client/
 *.StyleCop
 /samples/client/client.sln
